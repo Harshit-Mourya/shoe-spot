@@ -10,6 +10,7 @@
 
 .dropdown-menu {
   background-color: #343a40;
+  width: 200px;
 }
 
 .dropdown-menu a {

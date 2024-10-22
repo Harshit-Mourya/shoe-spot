@@ -1,11 +1,14 @@
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <>
       <nav className="navbar">
         <div className="container-fluid d-flex align-items-center h-50">
-          <a className="navbar-brand text-white">Shoe Spot</a>
+          <Link to="/" className="navbar-brand text-white">
+            Shoe Spot
+          </Link>
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
@@ -19,66 +22,86 @@ export default function Navbar() {
           </form>
         </div>
         <div className="container-fluid border-top d-flex align-items-center h-50">
-          <div class="w-25 d-flex justify-content-between mx-auto">
-            <div class="nav-item dropdown">
+          <div className="w-50 d-flex justify-content-between mx-auto">
+            <div className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-link dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Men
+                Casuals
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/sneakers">
                     Sneakers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Slip Ons
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/loafers">
                     Loafers
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/sandals">
+                    Sandals
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/slides">
+                    Slides
+                  </Link>
                 </li>
               </ul>
             </div>
-            <div class="nav-item dropdown">
+            <div className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-link dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Women
+                Formals
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Sneakers
-                  </a>
+                  <Link className="dropdown-item" to="/oxfords">
+                    Oxfords
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Slip Ons
-                  </a>
+                  <Link className="dropdown-item" to="/derby-shoes">
+                    Derby Shoes
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    Sandals
-                  </a>
+                  <Link className="dropdown-item" to="/loafers">
+                    Loafers
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/mojaris">
+                    Mojaris (or Juttis)
+                  </Link>
                 </li>
               </ul>
             </div>
-            <div class="nav-item dropdown">
+            <div className="nav-item dropdown">
+              <Link
+                className="nav-link fs-5 text-white"
+                to="/sports"
+                role="button"
+                aria-expanded="false"
+              >
+                Sports
+              </Link>
+            </div>
+            <div className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-link dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -86,14 +109,14 @@ export default function Navbar() {
               >
                 Sale
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Shop By Price
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Shop By Discount
                   </a>
                 </li>
