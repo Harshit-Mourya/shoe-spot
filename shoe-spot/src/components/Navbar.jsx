@@ -1,7 +1,10 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ fetchProductsByCategory }) {
+  const handleCategoryClick = (category) => {
+    fetchProductsByCategory(category);
+  };
   return (
     <>
       <nav className="navbar">
@@ -25,7 +28,7 @@ export default function Navbar() {
           <div className="w-50 d-flex justify-content-between mx-auto">
             <div className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-a dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -35,30 +38,42 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/sneakers">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Sneakers")}
+                  >
                     Sneakers
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/loafers">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Loafers")}
+                  >
                     Loafers
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sandals">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Sandals")}
+                  >
                     Sandals
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/slides">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Slides")}
+                  >
                     Slides
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
             <div className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-a dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -68,40 +83,52 @@ export default function Navbar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/oxfords">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Oxfords")}
+                  >
                     Oxfords
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/derby-shoes">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("DerbyShoes")}
+                  >
                     Derby Shoes
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/loafers">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Loafers")}
+                  >
                     Loafers
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/mojaris">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleCategoryClick("Mojaris")}
+                  >
                     Mojaris (or Juttis)
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
             <div className="nav-item dropdown">
-              <Link
-                className="nav-link fs-5 text-white"
-                to="/sports"
+              <a
+                className="nav-a fs-5 text-white"
                 role="button"
                 aria-expanded="false"
+                onClick={() => handleCategoryClick("Sports")}
               >
                 Sports
-              </Link>
+              </a>
             </div>
             <div className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle fs-5 text-white"
+                className="nav-a dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
