@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import Logo from "/logo.png";
 
 export default function Navbar({ fetchProductsByCategory }) {
   const handleCategoryClick = (category) => {
@@ -9,7 +10,12 @@ export default function Navbar({ fetchProductsByCategory }) {
     <>
       <nav className="navbar">
         <div className="container-fluid d-flex align-items-center h-50">
-          <Link to="/" className="navbar-brand text-white">
+          <Link
+            to="/"
+            className="navbar-brand text-white"
+            onClick={() => handleCategoryClick("products")}
+          >
+            <img src={Logo} alt="Logo" className="logo" />
             Shoe Spot
           </Link>
           <form className="d-flex" role="search">
@@ -118,7 +124,7 @@ export default function Navbar({ fetchProductsByCategory }) {
             </div>
             <div className="nav-item dropdown">
               <a
-                className="nav-a fs-5 text-white"
+                className="nav-a fs-5 dropdown-toggle text-white"
                 role="button"
                 aria-expanded="false"
                 onClick={() => handleCategoryClick("Sports")}

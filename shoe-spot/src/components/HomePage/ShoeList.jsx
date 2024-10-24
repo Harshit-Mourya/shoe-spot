@@ -1,6 +1,7 @@
 // src/components/ShoeList.jsx
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import "./Home.css";
+import ShoeCard from "./ShoeCard.jsx";
 
 export default function ShoeList({ products }) {
   const [error, setError] = useState(null);
@@ -8,18 +9,13 @@ export default function ShoeList({ products }) {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
-      <h1>Shoe List</h1>
-      <ul>
+    <>
+      <h2>All Shoes</h2>
+      <div className="ShoeList">
         {products.map((product) => (
-          <li key={product.id}>
-            <h2>{product.title}</h2>
-            <p>Price: ${product.price.toFixed(2)}</p>
-            <p>{product.description}</p>
-            <p>Category: {product.category}</p>
-          </li>
+          <ShoeCard product={product} />
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 }
