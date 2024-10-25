@@ -38,6 +38,9 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/sports", (schema, request) => {
         return products.filter((product) => product.category === "Sports");
       });
+      this.get("/pricels99", (schema, request) => {
+        return products.filter((product) => product.price <= 99);
+      });
     },
   });
 }

@@ -7,16 +7,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./components/HomePage/Home.jsx";
-import Sports from "./components/Sports.jsx";
+import ShoeInfo from "./components/HomePage/ShoeInfo.jsx";
 import NotFound from "./components/NotFound.jsx";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [isFilterOn, setIsFilterOn] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchProductsByCategory = async (category) => {
+  const filterProducts = async (filter) => {
     try {
-      const response = await axios.get(`/api/${category.toLowerCase()}`);
+      const response = await axios.get(`/api/${filter.toLowerCase()}`);
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -38,6 +39,11 @@ function App() {
     fetchProducts();
   }, []);
 
+  const toggleFilter = () => {
+    console.log("in app");
+    setIsFilterOn(!isFilterOn);
+  };
+
   // const [fruits, setFruits] = useState([]);
 
   // const fetchAPI = async () => {
@@ -52,14 +58,13 @@ function App() {
 
   return (
     <Router>
-      <Navbar fetchProductsByCategory={fetchProductsByCategory} />
+      <Navbar filterProducts={filterProducts} toggleFilter={toggleFilter} />
       <Routes>
-        <Route path="/" element={<Home products={products} />} />
         <Route
-          path="/sports"
-          element={<Sports fetchProductsByCategory={fetchProductsByCategory} />}
+          path="/"
+          element={<Home products={products} isFilterOn={isFilterOn} />}
         />
-
+        <Route path="/product-details" element={<ShoeInfo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

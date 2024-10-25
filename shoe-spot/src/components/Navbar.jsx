@@ -2,9 +2,14 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Logo from "/logo.png";
 
-export default function Navbar({ fetchProductsByCategory }) {
-  const handleCategoryClick = (category) => {
-    fetchProductsByCategory(category);
+export default function Navbar({ filterProducts, toggleFilter }) {
+  const handleFilterClick = (filter) => {
+    filterProducts(filter);
+  };
+  const filterToggle = () => {
+    console.log("in navbar");
+
+    toggleFilter();
   };
   return (
     <>
@@ -13,7 +18,7 @@ export default function Navbar({ fetchProductsByCategory }) {
           <Link
             to="/"
             className="navbar-brand text-white"
-            onClick={() => handleCategoryClick("products")}
+            onClick={() => handleFilterClick("products")}
           >
             <img src={Logo} alt="Logo" className="logo" />
             Shoe Spot
@@ -46,7 +51,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Sneakers")}
+                    onClick={() => handleFilterClick("Sneakers")}
                   >
                     Sneakers
                   </a>
@@ -54,7 +59,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Loafers")}
+                    onClick={() => handleFilterClick("Loafers")}
                   >
                     Loafers
                   </a>
@@ -62,7 +67,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Sandals")}
+                    onClick={() => handleFilterClick("Sandals")}
                   >
                     Sandals
                   </a>
@@ -70,7 +75,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Slides")}
+                    onClick={() => handleFilterClick("Slides")}
                   >
                     Slides
                   </a>
@@ -91,7 +96,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Oxfords")}
+                    onClick={() => handleFilterClick("Oxfords")}
                   >
                     Oxfords
                   </a>
@@ -99,7 +104,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("DerbyShoes")}
+                    onClick={() => handleFilterClick("DerbyShoes")}
                   >
                     Derby Shoes
                   </a>
@@ -107,7 +112,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Loafers")}
+                    onClick={() => handleFilterClick("Loafers")}
                   >
                     Loafers
                   </a>
@@ -115,7 +120,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => handleCategoryClick("Mojaris")}
+                    onClick={() => handleFilterClick("Mojaris")}
                   >
                     Mojaris (or Juttis)
                   </a>
@@ -127,7 +132,7 @@ export default function Navbar({ fetchProductsByCategory }) {
                 className="nav-a fs-5 dropdown-toggle text-white"
                 role="button"
                 aria-expanded="false"
-                onClick={() => handleCategoryClick("Sports")}
+                onClick={() => handleFilterClick("Sports")}
               >
                 Sports
               </a>
@@ -144,12 +149,18 @@ export default function Navbar({ fetchProductsByCategory }) {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a
+                    className="dropdown-item "
+                    onClick={() => filterToggle("byPrice")}
+                  >
                     Shop By Price
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => filterToggle("byDiscount")}
+                  >
                     Shop By Discount
                   </a>
                 </li>

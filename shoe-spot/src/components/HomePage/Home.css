@@ -1,9 +1,18 @@
 .ShoeList {
   display: flex;
+}
+
+.FilterBox {
+  width: 25%;
+}
+
+.ShoeListMain {
+  flex: 1;
+  display: flex;
   flex-wrap: wrap;
   align-items: start;
   justify-content: space-evenly;
-  /* background-color: bisque; */
+  background-color: bisque;
 }
 
 .ShoeCard {
@@ -11,11 +20,12 @@
   border-radius: 8px;
   padding: 10px;
   margin: 3rem 1rem;
-  max-width: 400px;
+  width: 350px;
   max-height: 440px;
   color: white;
   background-color: #1f1f1f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .ShoeCard img {
@@ -38,4 +48,25 @@
   font-size: 1rem;
   color: #b4b4b4;
   margin-bottom: 8px;
+}
+
+.ShoeInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem;
+}
+
+.product-img {
+  width: 45%;
+}
+.product-img img {
+  width: 100%;
+}
+
+.product-info {
+  width: 45%;
+}
+
+.product-price {
+  font-size: 1.2rem;
 }

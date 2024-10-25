@@ -1,10 +1,10 @@
 import ShoeList from "./ShoeList.jsx";
 
-export default function Home({ products }) {
+export default function Home({ products, isFilterOn }) {
   return (
     <>
       <h1>Home</h1>
-      <ShoeList products={products} />
+      <ShoeList products={products} isFilterOn={isFilterOn} />
     </>
   );
 }
