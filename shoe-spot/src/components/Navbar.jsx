@@ -2,9 +2,9 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Logo from "/logo.png";
 
-export default function Navbar({ filterProducts, toggleFilter }) {
-  const handleFilterClick = (filter) => {
-    filterProducts(filter);
+export default function Navbar({ filterProductsByCategory, toggleFilter }) {
+  const handleFilterClick = (category) => {
+    filterProductsByCategory(category);
   };
   const filterToggle = () => {
     console.log("in navbar");
@@ -80,6 +80,14 @@ export default function Navbar({ filterProducts, toggleFilter }) {
                     Slides
                   </a>
                 </li>
+                <li>
+                  <a
+                    className="dropdown-item"
+                    onClick={() => handleFilterClick("Boots")}
+                  >
+                    Boots
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="nav-item dropdown">
@@ -112,6 +120,14 @@ export default function Navbar({ filterProducts, toggleFilter }) {
                 <li>
                   <a
                     className="dropdown-item"
+                    onClick={() => handleFilterClick("Heels")}
+                  >
+                    Heels
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item"
                     onClick={() => handleFilterClick("Loafers")}
                   >
                     Loafers
@@ -129,42 +145,44 @@ export default function Navbar({ filterProducts, toggleFilter }) {
             </div>
             <div className="nav-item dropdown">
               <a
-                className="nav-a fs-5 dropdown-toggle text-white"
-                role="button"
-                aria-expanded="false"
-                onClick={() => handleFilterClick("Sports")}
-              >
-                Sports
-              </a>
-            </div>
-            <div className="nav-item dropdown">
-              <a
                 className="nav-a dropdown-toggle fs-5 text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Sale
+                Athletic shoes
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <a
-                    className="dropdown-item "
-                    onClick={() => filterToggle("byPrice")}
+                    className="dropdown-item"
+                    onClick={() => handleFilterClick("Sports")}
                   >
-                    Shop By Price
+                    Sports
                   </a>
                 </li>
                 <li>
                   <a
                     className="dropdown-item"
-                    onClick={() => filterToggle("byDiscount")}
+                    onClick={() => handleFilterClick("Hiking")}
                   >
-                    Shop By Discount
+                    Hiking
                   </a>
                 </li>
               </ul>
+            </div>
+
+            <div className="nav-item dropdown">
+              <a
+                className="nav-a dropdown-toggle fs-5 text-white"
+                href="#"
+                role="button"
+                aria-expanded="false"
+                onClick={() => filterToggle("byPrice")}
+              >
+                Filters
+              </a>
             </div>
           </div>
         </div>

@@ -15,9 +15,22 @@ function App() {
   const [isFilterOn, setIsFilterOn] = useState(false);
   const [error, setError] = useState(null);
 
-  const filterProducts = async (filter) => {
+  const filterProducts = async (filter, cost) => {
     try {
-      const response = await axios.get(`/api/${filter.toLowerCase()}`);
+      const response = await axios.get(`/api/${filter.toLowerCase()}`, {
+        params: { cost },
+      });
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setError("Failed to fetch products. Please try again.");
+    }
+  };
+  const filterProductsByCategory = async (category) => {
+    try {
+      const response = await axios.get(`/api/category`, {
+        params: { category },
+      });
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -58,11 +71,20 @@ function App() {
 
   return (
     <Router>
-      <Navbar filterProducts={filterProducts} toggleFilter={toggleFilter} />
+      <Navbar
+        filterProductsByCategory={filterProductsByCategory}
+        toggleFilter={toggleFilter}
+      />
       <Routes>
         <Route
           path="/"
-          element={<Home products={products} isFilterOn={isFilterOn} />}
+          element={
+            <Home
+              products={products}
+              isFilterOn={isFilterOn}
+              filterProducts={filterProducts}
+            />
+          }
         />
         <Route path="/product-details" element={<ShoeInfo />} />
         <Route path="*" element={<NotFound />} />

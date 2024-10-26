@@ -14,32 +14,25 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       // Route to get products by category
-      this.get("/sneakers", (schema, request) => {
-        return products.filter((product) => product.category === "Sneakers");
+
+      this.get("/category", (schema, request) => {
+        const params = request.queryParams;
+        const category = params.category;
+
+        return products.filter((product) => product.category === category);
       });
-      this.get("/loafers", (schema, request) => {
-        return products.filter((product) => product.category === "Loafers");
-      });
-      this.get("/sandals", (schema, request) => {
-        return products.filter((product) => product.category === "Sandals");
-      });
-      this.get("/slides", (schema, request) => {
-        return products.filter((product) => product.category === "Slides");
-      });
-      this.get("/oxfords", (schema, request) => {
-        return products.filter((product) => product.category === "Oxfords");
-      });
-      this.get("/derbyshoes", (schema, request) => {
-        return products.filter((product) => product.category === "DerbyShoes");
-      });
-      this.get("/mojaris", (schema, request) => {
-        return products.filter((product) => product.category === "Mojaris");
-      });
-      this.get("/sports", (schema, request) => {
-        return products.filter((product) => product.category === "Sports");
-      });
-      this.get("/pricels99", (schema, request) => {
-        return products.filter((product) => product.price <= 99);
+      this.get("/costrange", (schema, request) => {
+        const params = request.queryParams;
+        const cost = params.cost;
+
+        if (Array.isArray(cost) && cost.length === 2) {
+          const minCost = parseFloat(cost[0]);
+          const maxCost = parseFloat(cost[1]);
+
+          return products.filter((product) => {
+            return product.price >= minCost && product.price < maxCost;
+          });
+        }
       });
     },
   });
