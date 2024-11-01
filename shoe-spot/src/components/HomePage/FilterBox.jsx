@@ -1,17 +1,23 @@
 import "./Home.css";
 
-export default function FilterBox({ isFilterOn, filterProducts }) {
+export default function FilterBox({ filterProducts, toggleFilter }) {
   const handleFilterClick = (filter, cost) => {
     filterProducts(filter, cost);
   };
+  const filterToggle = () => {
+    console.log("in filter box");
+
+    toggleFilter();
+  };
   return (
-    <div
-      className="FilterBox"
-      style={{ display: isFilterOn ? "block" : "none" }}
-    >
+    <div className="FilterBox">
+      <div className="close-filter">
+        <i></i>
+        <i class="fa-solid fa-xmark" onClick={() => filterToggle()}></i>
+      </div>
       <div>
         <div className="filters">
-          <h5 onClick={() => handleFilterClick("products")}>Show All</h5>
+          <h5 onClick={() => handleFilterClick()}>Show All</h5>
         </div>
         <div className="filters">
           <h5>Shop By Price</h5>
@@ -32,7 +38,7 @@ export default function FilterBox({ isFilterOn, filterProducts }) {
             className="filter-option"
             onClick={() => handleFilterClick("costrange", [300, 500])}
           >
-            $300 - $500{" "}
+            $300 - $500
           </p>
           <p
             className="filter-option"

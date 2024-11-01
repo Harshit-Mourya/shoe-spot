@@ -5,14 +5,33 @@
 .FilterBox {
   width: 25%;
   padding: 2rem;
+  border-right: 2px solid chocolate;
+  background-color: rgb(255, 238, 217);
+}
+
+.close-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.fa-xmark {
+  padding: 5px 8px;
+  color: chocolate;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fa-xmark:hover {
+  background-color: rgba(255, 106, 0, 0.294);
 }
 
 .filters {
   margin-bottom: 20px;
-  h5 {
-    color: rgb(198, 83, 0);
-    cursor: pointer;
-  }
+}
+.filters h5 {
+  color: rgb(198, 83, 0);
+  cursor: pointer;
 }
 
 .filter-option {
@@ -36,7 +55,7 @@
 }
 
 .ShoeCard {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 8px;
   padding: 10px;
   margin: 3rem 1rem;
@@ -44,8 +63,12 @@
   max-height: 440px;
   color: white;
   background-color: #1f1f1f;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+}
+
+.ShoeCard:hover {
+  box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.5);
 }
 
 .ShoeCard img {
@@ -89,4 +112,10 @@
 
 .product-price {
   font-size: 1.2rem;
+}
+
+.no-products {
+  margin: 15rem 0;
+  font-size: 2rem;
+  font-weight: 600;
 }

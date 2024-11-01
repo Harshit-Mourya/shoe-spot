@@ -15,7 +15,7 @@ function App() {
   const [isFilterOn, setIsFilterOn] = useState(false);
   const [error, setError] = useState(null);
 
-  const filterProducts = async (filter, cost) => {
+  const filterProducts = async (filter = "all", cost) => {
     try {
       const response = await axios.get(`/api/${filter.toLowerCase()}`, {
         params: { cost },
@@ -26,7 +26,7 @@ function App() {
       setError("Failed to fetch products. Please try again.");
     }
   };
-  const filterProductsByCategory = async (category) => {
+  const filterProductsByCategory = async (category = "all") => {
     try {
       const response = await axios.get(`/api/category`, {
         params: { category },
@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/api/products");
+        const response = await axios.get("/api/all");
         console.log(response.data);
         setProducts(response.data);
       } catch (err) {
@@ -83,6 +83,7 @@ function App() {
               products={products}
               isFilterOn={isFilterOn}
               filterProducts={filterProducts}
+              toggleFilter={toggleFilter}
             />
           }
         />

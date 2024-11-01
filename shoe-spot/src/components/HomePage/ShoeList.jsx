@@ -4,14 +4,24 @@ import "./Home.css";
 import ShoeCard from "./ShoeCard.jsx";
 import FilterBox from "./FilterBox.jsx";
 
-export default function ShoeList({ products, isFilterOn, filterProducts }) {
+export default function ShoeList({
+  products,
+  isFilterOn,
+  filterProducts,
+  toggleFilter,
+}) {
   const [error, setError] = useState(null);
 
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="ShoeList">
-      <FilterBox isFilterOn={isFilterOn} filterProducts={filterProducts} />
+      {isFilterOn && (
+        <FilterBox
+          filterProducts={filterProducts}
+          toggleFilter={toggleFilter}
+        />
+      )}
 
       <div className="ShoeListMain">
         {products.length === 0 ? (

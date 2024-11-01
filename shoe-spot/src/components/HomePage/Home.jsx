@@ -1,6 +1,11 @@
 import ShoeList from "./ShoeList.jsx";
 
-export default function Home({ products, isFilterOn, filterProducts }) {
+export default function Home({
+  products,
+  isFilterOn,
+  filterProducts,
+  toggleFilter,
+}) {
   return (
     <>
       <h1>Home</h1>
@@ -8,6 +13,7 @@ export default function Home({ products, isFilterOn, filterProducts }) {
         products={products}
         isFilterOn={isFilterOn}
         filterProducts={filterProducts}
+        toggleFilter={toggleFilter}
       />
     </>
   );

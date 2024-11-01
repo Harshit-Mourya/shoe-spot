@@ -9,7 +9,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.namespace = "api";
 
       // Products route
-      this.get("/products", () => {
+      this.get("/all", () => {
         return products; // Return products from sampleData.js
       });
 
@@ -19,7 +19,11 @@ export function makeServer({ environment = "development" } = {}) {
         const params = request.queryParams;
         const category = params.category;
 
-        return products.filter((product) => product.category === category);
+        if (category === "all") {
+          return products;
+        } else {
+          return products.filter((product) => product.category === category);
+        }
       });
       this.get("/costrange", (schema, request) => {
         const params = request.queryParams;
@@ -32,6 +36,8 @@ export function makeServer({ environment = "development" } = {}) {
           return products.filter((product) => {
             return product.price >= minCost && product.price < maxCost;
           });
+        } else {
+          return "Cost range invalid!";
         }
       });
     },
