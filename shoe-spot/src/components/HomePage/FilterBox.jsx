@@ -13,7 +13,7 @@ export default function FilterBox({ filterProducts, toggleFilter }) {
     <div className="FilterBox">
       <div className="close-filter">
         <i></i>
-        <i class="fa-solid fa-xmark" onClick={() => filterToggle()}></i>
+        <i className="fa-solid fa-xmark" onClick={() => filterToggle()}></i>
       </div>
       <div>
         <div className="filters">

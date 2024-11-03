@@ -1,5 +1,5 @@
 import { createServer } from "miragejs";
-import { products } from "./sampleData.js";
+import { products, shoeKeys, shoeTypes } from "./sampleData.js";
 
 export function makeServer({ environment = "development" } = {}) {
   return createServer({
@@ -7,6 +7,15 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
+
+      //Initial Fetch
+      this.get("/initialFetch", () => {
+        return {
+          products,
+          shoeKeys,
+          shoeTypes,
+        };
+      });
 
       // Products route
       this.get("/all", () => {

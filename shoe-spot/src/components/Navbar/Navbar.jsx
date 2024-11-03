@@ -1,8 +1,22 @@
 import "./Navbar.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "/logo.png";
+import NavItem from "./NavItem.jsx";
 
-export default function Navbar({ filterProductsByCategory, toggleFilter }) {
+export default function Navbar({
+  filterProductsByCategory,
+  toggleFilter,
+  shoeKeys,
+  shoeTypes,
+}) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    console.log("menu toggle");
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const handleFilterClick = (category) => {
     filterProductsByCategory(category);
   };
@@ -35,81 +49,19 @@ export default function Navbar({ filterProductsByCategory, toggleFilter }) {
             </button>
           </form>
         </div>
-        <div className="container-fluid border-top d-flex align-items-center h-50">
-          <div className="w-50 d-flex justify-content-between mx-auto">
-            <div className="nav-item dropdown">
+        <div className="container-fluid border-top d-flex align-items-center justify-content-between h-50 px-4">
+          <div className="nav-options w-50 d-flex justify-content-between mx-auto">
+            {shoeKeys.map((shoeKey) => (
+              <NavItem
+                shoeKey={shoeKey}
+                shoeType={shoeTypes[shoeKey]}
+                handleFilterClick={handleFilterClick}
+              />
+            ))}
+
+            {/* <div className="nav-item dropdown">
               <a
                 className="nav-a dropdown-toggle fs-5 text-white"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Casuals
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Sneakers")}
-                  >
-                    Sneakers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Loafers")}
-                  >
-                    Loafers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Sandals")}
-                  >
-                    Sandals
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Slides")}
-                  >
-                    Slides
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Flats")}
-                  >
-                    Flats
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Clogs")}
-                  >
-                    Clogs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleFilterClick("Boots")}
-                  >
-                    Boots
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav-item dropdown">
-              <a
-                className="nav-a dropdown-toggle fs-5 text-white"
-                href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -175,7 +127,7 @@ export default function Navbar({ filterProductsByCategory, toggleFilter }) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Athletic shoes
+                Athletic Shoes
               </a>
               <ul className="dropdown-menu">
                 <li>
@@ -219,7 +171,7 @@ export default function Navbar({ filterProductsByCategory, toggleFilter }) {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className="nav-item dropdown">
               <a
@@ -231,6 +183,13 @@ export default function Navbar({ filterProductsByCategory, toggleFilter }) {
                 Filters
               </a>
             </div>
+
+            <div className="menu-icon" onClick={toggleMenu}>
+              <i className="fa-solid fa-bars "></i>
+            </div>
+          </div>
+          <div className="cart">
+            <i className="fa-solid fa-cart-shopping"></i>
           </div>
         </div>
       </nav>

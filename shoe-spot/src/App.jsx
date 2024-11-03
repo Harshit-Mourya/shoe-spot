@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./components/HomePage/Home.jsx";
 import ShoeInfo from "./components/HomePage/ShoeInfo.jsx";
@@ -12,6 +12,9 @@ import NotFound from "./components/NotFound.jsx";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [shoeKeys, setShoeKeys] = useState([]);
+  const [shoeTypes, setShoeTypes] = useState({});
+
   const [isFilterOn, setIsFilterOn] = useState(false);
   const [error, setError] = useState(null);
 
@@ -41,9 +44,12 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/api/all");
+        const response = await axios.get("/api/initialFetch");
         console.log(response.data);
-        setProducts(response.data);
+        const { products, shoeKeys, shoeTypes } = response.data;
+        setProducts(products);
+        setShoeKeys(shoeKeys);
+        setShoeTypes(shoeTypes);
       } catch (err) {
         setError(err.message);
       }
@@ -74,6 +80,8 @@ function App() {
       <Navbar
         filterProductsByCategory={filterProductsByCategory}
         toggleFilter={toggleFilter}
+        shoeKeys={shoeKeys}
+        shoeTypes={shoeTypes}
       />
       <Routes>
         <Route

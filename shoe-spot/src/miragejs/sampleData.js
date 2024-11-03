@@ -738,7 +738,8 @@ export const products = [
     price: 110.0,
     description: "Durable shoes designed for soccer gameplay.",
     category: "Court",
-    imgSrc: "https://images.unsplash.com/photo-1581843664548-12391",
+    imgSrc:
+      "https://media.istockphoto.com/id/121490520/photo/pair-of-black-athletic-shoes-on-a-white-background.jpg?s=612x612&w=0&k=20&c=zUSw8K1S2J1XVbMOADM4HYVv_fPZ_hEFlQ34kUf1_pw=",
   },
   {
     id: 81,
@@ -747,7 +748,7 @@ export const products = [
     description: "Optimal grip shoes for tennis courts.",
     category: "Court",
     imgSrc:
-      "https://media.istockphoto.com/id/121490520/photo/pair-of-black-athletic-shoes-on-a-white-background.jpg?s=612x612&w=0&k=20&c=zUSw8K1S2J1XVbMOADM4HYVv_fPZ_hEFlQ34kUf1_pw=",
+      "https://media.istockphoto.com/id/1059958420/photo/gray-sneakers-with-red-laces-on-a-white-background.jpg?s=612x612&w=0&k=20&c=7l1NETfqJdeFdX6QNN9u2Qw0AKAvA6HwT1UB0hYkEUw=",
   },
 
   // Walking Shoes
@@ -855,3 +856,32 @@ export const products = [
       "https://media.istockphoto.com/id/1027561034/photo/hiking-boots-hiking-shoes-hiking-equipment.jpg?s=612x612&w=0&k=20&c=aF5c973q0L5NjKccQbGgWsjii194vXuSV-Oc1jL4GIo=",
   },
 ];
+
+export const shoeTypes = {
+  Casuals: [
+    "Sneakers",
+    "Loafers",
+    "Sandals",
+    "Slides",
+    "Flats",
+    "Clogs",
+    "Boots",
+  ],
+  Formals: [
+    "Oxfords",
+    "Derby Shoes",
+    "Flats",
+    "Heels",
+    "Loafers",
+    "Mojaris (or Juttis)",
+  ],
+  "Athletic Shoes": [
+    "Sports",
+    "Walking Shoes",
+    "Court Shoes",
+    "Dance Shoes",
+    "Hiking",
+  ],
+};
+
+export const shoeKeys = ["Casuals", "Formals", "Athletic Shoes"];
