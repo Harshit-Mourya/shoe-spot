@@ -5,7 +5,6 @@
 .ShoeList {
   display: flex;
   background-color: bisque;
-  padding: 2rem 0;
 }
 
 .FilterBox {
@@ -59,6 +58,7 @@
   align-items: start;
   justify-content: space-evenly;
   background-color: bisque;
+  padding: 2rem 0;
 }
 
 .ShoeCard {

@@ -87,7 +87,7 @@ export default function Navbar() {
             <i className="fa-solid fa-cart-shopping"></i>
 
             {cartItems.length > 0 ? (
-              <span className="badge rounded-circle bg-danger position-absolute top-0 start-100 translate-middle text-center">
+              <span className="badge rounded-circle d-flex align-items-center position-absolute top-0 start-100 translate-middle text-center">
                 {cartItems.length}
               </span>
             ) : null}

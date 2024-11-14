@@ -45,6 +45,9 @@ a {
   cursor: pointer;
 }
 .badge {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.4rem;
+  height: 20px !important;
+  width: 20px !important;
+  font-size: 0.7rem !important;
+  padding: 0.2rem 0.4rem !important;
+  background-color: chocolate !important;
 }
