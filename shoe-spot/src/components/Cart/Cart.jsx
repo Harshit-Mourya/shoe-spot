@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { cartContext } from "../../context/cartContext";
 import "./Cart.css";
-
+import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
-
-import AddToCartBtn from "./AddToCartBtn";
 
 export default function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
@@ -20,6 +18,7 @@ export default function Cart() {
       <div className="myCart pb-5 pt-5 text-center">
         <h1 className="m-0">Your Shopping Cart</h1>
         <div className="CartItems mx-auto">
+          {cartItems.length === 0 ? <EmptyCart /> : null}
           {cartItems.map((item) => (
             <CartItem item={item} key={item.id} />
           ))}
@@ -29,6 +28,7 @@ export default function Cart() {
           <button
             onClick={() => handleClearCartClick()}
             className="btn clearCartBtn"
+            disabled={cartItems.length === 0}
           >
             Clear Cart
           </button>

@@ -34,6 +34,31 @@ export function makeServer({ environment = "development" } = {}) {
           return products.filter((product) => product.category === category);
         }
       });
+
+      //To get products based on search
+      this.get("/search", (schema, request) => {
+        const { searchTerm } = request.queryParams; // Get the search term from query params
+
+        // If no search term is provided, return all products
+        if (!searchTerm) {
+          return products;
+        }
+
+        // Make the search term lowercase for case-insensitive search
+        const lowerSearchTerm = searchTerm.toLowerCase();
+
+        // Filter products by checking if the searchTerm exists in title, description, or category
+        const filteredProducts = products.filter((product) => {
+          return (
+            product.title.toLowerCase().includes(lowerSearchTerm) ||
+            product.description.toLowerCase().includes(lowerSearchTerm) ||
+            product.category.toLowerCase().includes(lowerSearchTerm)
+          );
+        });
+
+        return filteredProducts; // Return the filtered products
+      });
+
       this.get("/costrange", (schema, request) => {
         const params = request.queryParams;
         const cost = params.cost;

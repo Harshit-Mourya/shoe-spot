@@ -9,9 +9,10 @@ import { cartContext } from "../../context/cartContext";
 import { filterContext } from "../../context/filterContext.jsx";
 
 export default function Navbar() {
+  const [searchTerm, setSearchTerm] = useState("");
   const { cartItems } = useContext(cartContext);
   const { toggleFilter } = useContext(filterContext);
-  const { filterProductsByCategory, shoeKeys, shoeTypes } =
+  const { filterProductsByCategory, shoeKeys, shoeTypes, searchProduct } =
     useContext(productsContext);
 
   const handleFilterClick = (category) => {
@@ -21,6 +22,15 @@ export default function Navbar() {
     console.log("in navbar");
 
     toggleFilter();
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value); // Update the search term in state
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault(); // Prevent page reload
+    searchProduct(searchTerm); // Call the search function with the search term
   };
 
   return (
@@ -35,12 +45,14 @@ export default function Navbar() {
             <img src={Logo} alt="Logo" className="logo" />
             Shoe Spot
           </Link>
-          <form className="d-flex" role="search">
+          <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
             <input
               className="form-control me-2 search-input"
               type="search"
               placeholder="Search"
+              value={searchTerm}
               aria-label="Search"
+              onChange={handleSearchChange}
             />
             <button className="btn btn-outline-light" type="submit">
               Search

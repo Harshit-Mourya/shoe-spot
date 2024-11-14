@@ -2,7 +2,8 @@
   background-color: bisque;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   gap: 30px;
 }
 
@@ -68,9 +69,17 @@
   color: white !important;
 }
 
-.clearCartBtn,
+.clearCartBtn:hover {
+  background-color: rgb(198, 83, 0);
+}
 .AddToCartBtn:hover {
   background-color: rgb(198, 83, 0);
+}
+
+.btn.clearCartBtn:disabled {
+  opacity: 0.5 !important; /* Make the button more faded */
+  cursor: not-allowed !important; /* Change the cursor to show it's disabled */
+  background-color: chocolate !important; /* Optional: Makes background gray */
 }
 
 @media (max-width: 1160px) {
@@ -82,4 +91,13 @@
   .CartItems {
     width: 95%;
   }
+}
+
+.EmptyCart .redirectBtn {
+  font-weight: 600;
+  color: chocolate;
+}
+.EmptyCart .redirectBtn:hover {
+  color: rgb(198, 83, 0);
+  text-decoration: underline;
 }

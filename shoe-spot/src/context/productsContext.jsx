@@ -47,6 +47,25 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const searchProduct = async (searchTerm) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.get(`/api/search`, {
+        params: { searchTerm },
+      });
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setError(
+        error?.response?.data?.message ||
+          "Failed to fetch products. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -77,7 +96,7 @@ export const ProductsProvider = ({ children }) => {
       shoeTypes,
       error,
       loading,
-
+      searchProduct,
       filterProducts,
       filterProductsByCategory,
     }),
