@@ -1,0 +1,85 @@
+.myCart {
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.CartItems {
+  width: 70%;
+  padding: 20px;
+}
+
+.CartItem {
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid transparent;
+}
+.CartItem:hover {
+  background-color: rgb(252, 214, 167);
+  border: 2px solid chocolate;
+}
+
+.CartItem img {
+  width: 12.5rem;
+}
+
+.item-info {
+  width: 12.5rem;
+}
+
+.edit-qty div {
+  font-size: 1rem;
+  width: 30px;
+  text-align: center;
+  background-color: chocolate;
+  color: white;
+  cursor: pointer;
+}
+.edit-qty div:nth-child(odd):hover {
+  background-color: rgb(198, 83, 0);
+}
+
+.remove-from-cart {
+  width: 100px;
+}
+.remove-from-cart button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.remove-from-cart i {
+  font-size: 1.5rem;
+  color: chocolate;
+}
+.remove-from-cart button :hover {
+  color: rgb(198, 83, 0);
+}
+
+.clearCartBtn,
+.AddToCartBtn {
+  background-color: chocolate;
+  color: white !important;
+}
+
+.clearCartBtn,
+.AddToCartBtn:hover {
+  background-color: rgb(198, 83, 0);
+}
+
+@media (max-width: 1160px) {
+  .CartItems {
+    width: 80%;
+  }
+}
+@media (max-width: 990px) {
+  .CartItems {
+    width: 95%;
+  }
+}

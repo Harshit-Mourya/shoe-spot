@@ -1,3 +1,7 @@
+.Home {
+  background-color: bisque;
+}
+
 .ShoeList {
   display: flex;
 }
@@ -96,7 +100,8 @@
 .ShoeInfo {
   display: flex;
   justify-content: space-between;
-  margin: 5rem;
+  padding: 5rem;
+  background-color: bisque;
 }
 
 .product-img {

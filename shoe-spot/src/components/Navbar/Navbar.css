@@ -2,6 +2,9 @@
   height: 150px;
   padding: 0;
   background-color: #343a40;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .dropdown-toggle::after {
@@ -35,36 +38,13 @@ a {
   text-decoration: none;
 }
 
-.menu-icon {
-  display: none;
-  font-size: 1.5rem;
-  padding: 0 10px;
-  color: white;
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-
-.menu-icon:hover {
-  border-color: white;
-  background-color: rgba(255, 255, 255, 0.136);
-}
-
 .cart {
   font-size: 1.5rem;
   padding: 0 10px;
   color: white;
   cursor: pointer;
 }
-
-@media (max-width: 820px) {
-  .nav-item {
-    display: none; /* Hide dropdowns on small screens */
-  }
-  .nav-options {
-    width: 100%;
-  }
-  .menu-icon {
-    display: block; /* Show menu icon on small screens */
-  }
+.badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
 }

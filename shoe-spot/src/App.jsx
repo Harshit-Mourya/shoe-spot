@@ -5,63 +5,58 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
+import Cart from "./components/Cart/Cart.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/HomePage/Home.jsx";
 import ShoeInfo from "./components/HomePage/ShoeInfo.jsx";
 import NotFound from "./components/NotFound.jsx";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [shoeKeys, setShoeKeys] = useState([]);
-  const [shoeTypes, setShoeTypes] = useState({});
+  // const [products, setProducts] = useState([]);
+  // const [shoeKeys, setShoeKeys] = useState([]);
+  // const [shoeTypes, setShoeTypes] = useState({});
 
-  const [isFilterOn, setIsFilterOn] = useState(false);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
-  const filterProducts = async (filter = "all", cost) => {
-    try {
-      const response = await axios.get(`/api/${filter.toLowerCase()}`, {
-        params: { cost },
-      });
-      setProducts(response.data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setError("Failed to fetch products. Please try again.");
-    }
-  };
-  const filterProductsByCategory = async (category = "all") => {
-    try {
-      const response = await axios.get(`/api/category`, {
-        params: { category },
-      });
-      setProducts(response.data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setError("Failed to fetch products. Please try again.");
-    }
-  };
+  // const filterProducts = async (filter = "all", cost) => {
+  //   try {
+  //     const response = await axios.get(`/api/${filter.toLowerCase()}`, {
+  //       params: { cost },
+  //     });
+  //     setProducts(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     setError("Failed to fetch products. Please try again.");
+  //   }
+  // };
+  // const filterProductsByCategory = async (category = "all") => {
+  //   try {
+  //     const response = await axios.get(`/api/category`, {
+  //       params: { category },
+  //     });
+  //     setProducts(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     setError("Failed to fetch products. Please try again.");
+  //   }
+  // };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("/api/initialFetch");
-        console.log(response.data);
-        const { products, shoeKeys, shoeTypes } = response.data;
-        setProducts(products);
-        setShoeKeys(shoeKeys);
-        setShoeTypes(shoeTypes);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await axios.get("/api/initialFetch");
+  //       console.log(response.data);
+  //       const { products, shoeKeys, shoeTypes } = response.data;
+  //       setProducts(products);
+  //       setShoeKeys(shoeKeys);
+  //       setShoeTypes(shoeTypes);
+  //     } catch (err) {
+  //       setError(err.message);
+  //     }
+  //   };
 
-    fetchProducts();
-  }, []);
-
-  const toggleFilter = () => {
-    console.log("in app");
-    setIsFilterOn(!isFilterOn);
-  };
+  //   fetchProducts();
+  // }, []);
 
   // const [fruits, setFruits] = useState([]);
 
@@ -77,25 +72,11 @@ function App() {
 
   return (
     <Router>
-      <Navbar
-        filterProductsByCategory={filterProductsByCategory}
-        toggleFilter={toggleFilter}
-        shoeKeys={shoeKeys}
-        shoeTypes={shoeTypes}
-      />
+      <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              products={products}
-              isFilterOn={isFilterOn}
-              filterProducts={filterProducts}
-              toggleFilter={toggleFilter}
-            />
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/product-details" element={<ShoeInfo />} />
+        <Route path="/my-cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

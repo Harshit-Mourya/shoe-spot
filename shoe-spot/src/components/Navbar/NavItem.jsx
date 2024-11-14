@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import NavItemOptions from "./NavItemOptions.jsx";
 
-export default function NavItem({ shoeKey, shoeType, handleFilterClick }) {
+export default function NavItem({ shoeKey, shoeType }) {
   console.log(shoeKey);
   console.log(shoeType);
 
@@ -19,65 +19,9 @@ export default function NavItem({ shoeKey, shoeType, handleFilterClick }) {
       <ul className="dropdown-menu">
         {shoeType.map((shoe, index) => (
           <li key={index}>
-            <NavItemOptions shoe={shoe} handleFilterClick={handleFilterClick} />
+            <NavItemOptions shoe={shoe} />
           </li>
         ))}
-        {/* <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Sneakers")}
-          >
-            Sneakers
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Loafers")}
-          >
-            Loafers
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Sandals")}
-          >
-            Sandals
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Slides")}
-          >
-            Slides
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Flats")}
-          >
-            Flats
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Clogs")}
-          >
-            Clogs
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown-item"
-            onClick={() => handleFilterClick("Boots")}
-          >
-            Boots
-          </a>
-        </li> */}
       </ul>
     </div>
   );

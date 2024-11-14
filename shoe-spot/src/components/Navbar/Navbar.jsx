@@ -3,19 +3,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "/logo.png";
 import NavItem from "./NavItem.jsx";
+import { useContext } from "react";
+import { productsContext } from "../../context/productsContext.jsx";
+import { cartContext } from "../../context/cartContext";
+import { filterContext } from "../../context/filterContext.jsx";
 
-export default function Navbar({
-  filterProductsByCategory,
-  toggleFilter,
-  shoeKeys,
-  shoeTypes,
-}) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    console.log("menu toggle");
-    setIsMenuOpen(!isMenuOpen);
-  };
+export default function Navbar() {
+  const { cartItems } = useContext(cartContext);
+  const { toggleFilter } = useContext(filterContext);
+  const { filterProductsByCategory, shoeKeys, shoeTypes } =
+    useContext(productsContext);
 
   const handleFilterClick = (category) => {
     filterProductsByCategory(category);
@@ -25,10 +22,11 @@ export default function Navbar({
 
     toggleFilter();
   };
+
   return (
     <>
       <nav className="navbar">
-        <div className="container-fluid d-flex align-items-center h-50">
+        <div className="container-fluid d-flex align-items-center h-50 nav-1">
           <Link
             to="/"
             className="navbar-brand text-white"
@@ -39,7 +37,7 @@ export default function Navbar({
           </Link>
           <form className="d-flex" role="search">
             <input
-              className="form-control me-2"
+              className="form-control me-2 search-input"
               type="search"
               placeholder="Search"
               aria-label="Search"
@@ -49,13 +47,13 @@ export default function Navbar({
             </button>
           </form>
         </div>
-        <div className="container-fluid border-top d-flex align-items-center justify-content-between h-50 px-4">
+        <div className="container-fluid border-top d-flex align-items-center justify-content-between h-50 px-4 nav-2">
           <div className="nav-options w-50 d-flex justify-content-between mx-auto">
-            {shoeKeys.map((shoeKey) => (
+            {shoeKeys.map((shoeKey, index) => (
               <NavItem
                 shoeKey={shoeKey}
                 shoeType={shoeTypes[shoeKey]}
-                handleFilterClick={handleFilterClick}
+                key={index}
               />
             ))}
 
@@ -69,14 +67,19 @@ export default function Navbar({
                 Filters
               </a>
             </div>
-
-            <div className="menu-icon" onClick={toggleMenu}>
-              <i className="fa-solid fa-bars "></i>
-            </div>
           </div>
-          <div className="cart">
+          <Link
+            to="/my-cart"
+            className="cart d-flex justify-content-center align-items-center position-relative"
+          >
             <i className="fa-solid fa-cart-shopping"></i>
-          </div>
+
+            {cartItems.length > 0 ? (
+              <span className="badge rounded-circle bg-danger position-absolute top-0 start-100 translate-middle text-center">
+                {cartItems.length}
+              </span>
+            ) : null}
+          </Link>
         </div>
       </nav>
     </>

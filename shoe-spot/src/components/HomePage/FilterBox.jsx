@@ -1,9 +1,14 @@
 import "./Home.css";
+import { useContext } from "react";
+import { productsContext } from "../../context/productsContext";
+import { filterContext } from "../../context/filterContext";
 
-export default function FilterBox({ filterProducts, toggleFilter }) {
+export default function FilterBox({}) {
+  const { filterProducts } = useContext(productsContext);
   const handleFilterClick = (filter, cost) => {
     filterProducts(filter, cost);
   };
+  const { toggleFilter } = useContext(filterContext);
   const filterToggle = () => {
     console.log("in filter box");
 

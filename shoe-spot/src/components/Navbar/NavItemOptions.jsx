@@ -1,14 +1,24 @@
 import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
-export default function NavItemOptions({ shoe, handleFilterClick }) {
+import { productsContext } from "../../context/productsContext.jsx";
+export default function NavItemOptions({ shoe }) {
+  const { filterProductsByCategory } = useContext(productsContext);
+
+  const handleFilterClick = (category) => {
+    console.log(category);
+    filterProductsByCategory(category);
+  };
   return (
     <>
-      <a
+      <Link
+        to="/"
         className="dropdown-item"
         onClick={() => handleFilterClick(`${shoe.split(" ")[0]}`)}
       >
         {shoe}
-      </a>
+      </Link>
     </>
   );
 }

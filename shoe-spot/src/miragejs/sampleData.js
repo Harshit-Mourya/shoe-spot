@@ -205,7 +205,7 @@ export const products = [
     description: "Comfortable clogs for casual outings.",
     category: "Clogs",
     imgSrc:
-      "https://media.istockphoto.com/id/1504072661/photo/rubber-clog-shoes.jpg?s=612x612&w=0&k=20&c=9TNxVvXok4LKjyF_AHjT7BHdeA3R0TkZH62e1UHlbEM=",
+      "https://media.istockphoto.com/id/1160549685/photo/mens-black-rubber-slippers.jpg?s=612x612&w=0&k=20&c=6lD4lOKXdZNzluGk-nd3EWRi6gLWd1cXOBadsQ7y2cY=",
   },
   {
     id: 24,
