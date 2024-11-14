@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import "./Home.css";
+import BackButton from "../BackButton";
 
 import AddToCartBtn from "../Cart/AddToCartBtn";
 
@@ -9,6 +10,7 @@ export default function ShoeInfo() {
   return (
     <>
       <div className="ShoeInfo">
+        <BackButton />
         <div className="product-img">
           <img src={product.imgSrc} alt="product.title" />
         </div>

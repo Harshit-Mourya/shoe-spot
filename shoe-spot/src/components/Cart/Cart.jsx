@@ -3,6 +3,7 @@ import { cartContext } from "../../context/cartContext";
 import "./Cart.css";
 import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
+import BackButton from "../BackButton";
 
 export default function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
@@ -16,6 +17,8 @@ export default function Cart() {
   return (
     <>
       <div className="myCart pb-5 pt-5 text-center">
+        <BackButton />
+
         <h1 className="m-0">Your Shopping Cart</h1>
         <div className="CartItems mx-auto">
           {cartItems.length === 0 ? <EmptyCart /> : null}
