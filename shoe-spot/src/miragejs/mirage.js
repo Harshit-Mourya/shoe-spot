@@ -59,15 +59,26 @@ export function makeServer({ environment = "development" } = {}) {
         return filteredProducts; // Return the filtered products
       });
 
+      //To get products based on filter
       this.get("/costrange", (schema, request) => {
         const params = request.queryParams;
         const cost = params.cost;
+        const shoeCategory = params.shoeCategory;
 
         if (Array.isArray(cost) && cost.length === 2) {
           const minCost = parseFloat(cost[0]);
           const maxCost = parseFloat(cost[1]);
 
-          return products.filter((product) => {
+          let filteredProducts = [];
+          if (shoeCategory === "all") {
+            filteredProducts = products;
+          } else {
+            filteredProducts = products.filter(
+              (product) => product.category === shoeCategory
+            );
+          }
+
+          return filteredProducts.filter((product) => {
             return product.price >= minCost && product.price < maxCost;
           });
         } else {

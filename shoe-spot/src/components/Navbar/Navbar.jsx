@@ -12,10 +12,17 @@ export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const { cartItems } = useContext(cartContext);
   const { toggleFilter } = useContext(filterContext);
-  const { filterProductsByCategory, shoeKeys, shoeTypes, searchProduct } =
-    useContext(productsContext);
+  const {
+    filterProductsByCategory,
+    shoeKeys,
+    shoeTypes,
+    searchProduct,
+    setShoeCategory,
+  } = useContext(productsContext);
 
-  const handleFilterClick = (category) => {
+  const handleLogoClick = (category) => {
+    console.log("To Home Button");
+    setShoeCategory("all");
     filterProductsByCategory(category);
   };
   const filterToggle = () => {
@@ -40,7 +47,7 @@ export default function Navbar() {
           <Link
             to="/"
             className="navbar-brand text-white"
-            onClick={() => handleFilterClick()}
+            onClick={() => handleLogoClick()}
           >
             <img src={Logo} alt="Logo" className="logo" />
             Shoe Spot

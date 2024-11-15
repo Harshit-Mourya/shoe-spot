@@ -9,13 +9,14 @@ export const ProductsProvider = ({ children }) => {
   const [shoeTypes, setShoeTypes] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [shoeCategory, setShoeCategory] = useState("all");
 
   const filterProducts = async (filter = "all", cost) => {
     setLoading(true);
 
     try {
       const response = await axios.get(`/api/${filter.toLowerCase()}`, {
-        params: { cost },
+        params: { cost, shoeCategory },
       });
       setProducts(response.data);
     } catch (error) {
@@ -71,7 +72,7 @@ export const ProductsProvider = ({ children }) => {
       setLoading(true);
       try {
         const response = await axios.get("/api/initialFetch");
-        console.log(response.data);
+        // console.log(response.data);
         const { products, shoeKeys, shoeTypes } = response.data;
         setProducts(products);
         setShoeKeys(shoeKeys);
@@ -99,6 +100,7 @@ export const ProductsProvider = ({ children }) => {
       searchProduct,
       filterProducts,
       filterProductsByCategory,
+      setShoeCategory,
     }),
     [products, error, loading]
   );

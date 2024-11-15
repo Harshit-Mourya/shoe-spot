@@ -4,10 +4,12 @@ import { useContext } from "react";
 
 import { productsContext } from "../../context/productsContext.jsx";
 export default function NavItemOptions({ shoe }) {
-  const { filterProductsByCategory } = useContext(productsContext);
+  const { filterProductsByCategory, setShoeCategory } =
+    useContext(productsContext);
 
   const handleFilterClick = (category) => {
     console.log(category);
+    setShoeCategory(category);
     filterProductsByCategory(category);
   };
   return (

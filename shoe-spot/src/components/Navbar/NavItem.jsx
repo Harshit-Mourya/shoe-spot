@@ -2,8 +2,8 @@ import "./Navbar.css";
 import NavItemOptions from "./NavItemOptions.jsx";
 
 export default function NavItem({ shoeKey, shoeType }) {
-  console.log(shoeKey);
-  console.log(shoeType);
+  // console.log(shoeKey);
+  // console.log(shoeType);
 
   return (
     <div className="nav-item dropdown">
