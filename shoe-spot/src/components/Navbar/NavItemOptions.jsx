@@ -8,7 +8,7 @@ export default function NavItemOptions({ shoe }) {
     useContext(productsContext);
 
   const handleFilterClick = (category) => {
-    console.log(category);
+    // console.log(category);
     setShoeCategory(category);
     filterProductsByCategory(category);
   };

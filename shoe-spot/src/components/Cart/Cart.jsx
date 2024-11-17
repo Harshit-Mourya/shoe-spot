@@ -8,9 +8,9 @@ import BackButton from "../BackButton";
 export default function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(cartContext);
-  console.log(cartItems);
+  // console.log(cartItems);
   const handleClearCartClick = () => {
-    console.log("Cart Cleared");
+    // console.log("Cart Cleared");
     clearCart();
   };
 

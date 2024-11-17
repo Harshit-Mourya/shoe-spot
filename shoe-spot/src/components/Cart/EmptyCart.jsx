@@ -4,11 +4,13 @@ import { useContext } from "react";
 import { productsContext } from "../../context/productsContext";
 
 export default function EmptyCart() {
-  const { setShoeCategory } = useContext(productsContext);
+  const { setShoeCategory, filterProductsByCategory } =
+    useContext(productsContext);
   const handleClick = () => {
-    console.log("To Home Button");
+    // console.log("To Home Button");
 
     setShoeCategory("all");
+    filterProductsByCategory();
   };
   return (
     <>

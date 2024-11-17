@@ -17,10 +17,9 @@ export default function FilterBox({}) {
   return (
     <div className="FilterBox">
       <div className="close-filter">
-        <i></i>
         <i className="fa-solid fa-xmark" onClick={() => filterToggle()}></i>
       </div>
-      <div>
+      <div className="allFilters">
         <div className="filters">
           <h5 onClick={() => handleFilterClick()}>Show All</h5>
         </div>

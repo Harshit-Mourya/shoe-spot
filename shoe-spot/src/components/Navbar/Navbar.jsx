@@ -11,7 +11,7 @@ import { filterContext } from "../../context/filterContext.jsx";
 export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const { cartItems } = useContext(cartContext);
-  const { toggleFilter } = useContext(filterContext);
+  const { toggleFilter, setIsFilterOn } = useContext(filterContext);
   const {
     filterProductsByCategory,
     shoeKeys,
@@ -21,12 +21,13 @@ export default function Navbar() {
   } = useContext(productsContext);
 
   const handleLogoClick = (category) => {
-    console.log("To Home Button");
+    // console.log("To Home Button");
+    setIsFilterOn(false);
     setShoeCategory("all");
     filterProductsByCategory(category);
   };
   const filterToggle = () => {
-    console.log("in navbar");
+    // console.log("in navbar");
 
     toggleFilter();
   };

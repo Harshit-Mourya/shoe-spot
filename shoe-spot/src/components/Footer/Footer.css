@@ -99,11 +99,13 @@
     gap: 30px;
     margin-bottom: 2rem;
   }
+
   .footer-section {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
   }
   .footer-section ul li a {
     text-align: center;

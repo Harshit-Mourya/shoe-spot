@@ -18,9 +18,10 @@ export default function ShoeList({}) {
 
   return (
     <div className="ShoeList">
+      {isFilterOn && <div className="dull-background"></div>}
       {isFilterOn && <FilterBox />}
 
-      <div className="ShoeListMain">
+      <div className={`ShoeListMain ${isFilterOn ? "blur" : ""}`}>
         {products.length === 0 ? (
           <h3 className="no-products">No products available!</h3>
         ) : (

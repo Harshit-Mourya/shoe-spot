@@ -3,24 +3,39 @@
 }
 
 .ShoeList {
+  position: relative;
   display: flex;
   background-color: bisque;
+  z-index: 2;
 }
 
 .FilterBox {
-  width: 25%;
-  padding: 2rem;
-  border-right: 2px solid chocolate;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 1rem;
+  border: 2px solid chocolate;
   background-color: rgb(255, 238, 217);
+  z-index: 3;
+}
+
+.allFilters {
+  display: flex;
+  justify-content: space-around;
 }
 
 .close-filter {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+
   margin-bottom: 10px;
 }
 
 .fa-xmark {
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 5px 8px;
   color: chocolate;
   font-size: 1.5rem;
@@ -32,9 +47,6 @@
   color: rgb(198, 83, 0);
 }
 
-.filters {
-  margin-bottom: 20px;
-}
 .filters h5 {
   color: rgb(198, 83, 0);
   cursor: pointer;
@@ -51,6 +63,17 @@
   background-color: rgba(255, 106, 0, 0.294);
 }
 
+.dull-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  z-index: 1; /* Make sure it stays behind the filter box */
+  transition: opacity 0.3s ease; /* Smooth fade-in/fade-out */
+}
+
 .ShoeListMain {
   flex: 1;
   display: flex;
@@ -59,6 +82,12 @@
   justify-content: space-evenly;
   background-color: bisque;
   padding: 2rem 0;
+}
+
+.ShoeListMain.blur {
+  filter: blur(3px); /* Adjust the blur value as needed */
+  pointer-events: none; /* Optional: Disable interactions with blurred content */
+  transition: filter 0.3s ease; /* Smooth transition when the blur is applied/removed */
 }
 
 .ShoeCard {
@@ -94,6 +123,7 @@
   color: #b4b4b4;
   margin-bottom: 8px;
 }
+
 .card-content {
   font-size: 1rem;
   color: #b4b4b4;
@@ -142,5 +172,13 @@
     width: 100%;
     margin: 2rem auto 0;
     text-align: center;
+  }
+  .allFilters {
+    flex-direction: column;
+
+    padding: 2rem;
+  }
+  .filters {
+    margin-bottom: 20px;
   }
 }
