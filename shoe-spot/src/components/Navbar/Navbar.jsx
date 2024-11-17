@@ -52,7 +52,11 @@ export default function Navbar() {
             <img src={Logo} alt="Logo" className="logo" />
             Shoe Spot
           </Link>
-          <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
+          <form
+            className="d-flex align-items-center search-form"
+            role="search"
+            onSubmit={handleSearchSubmit}
+          >
             <input
               className="form-control me-2 search-input"
               type="search"

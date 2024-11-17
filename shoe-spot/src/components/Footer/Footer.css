@@ -8,7 +8,7 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -46,7 +46,7 @@
 
 .social-links {
   display: flex;
-  gap: 15px;
+  gap: 30px;
 }
 
 .social-links li {
@@ -88,4 +88,25 @@
 
 .footer-bottom p {
   margin: 0;
+}
+
+@media (max-width: 940px) {
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 2rem;
+  }
+  .footer-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-section ul li a {
+    text-align: center;
+    margin: 0;
+  }
 }

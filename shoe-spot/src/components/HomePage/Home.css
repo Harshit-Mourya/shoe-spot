@@ -117,6 +117,7 @@
 
 .product-info {
   width: 45%;
+  margin: auto 0;
 }
 
 .product-price {
@@ -127,4 +128,19 @@
   margin: 15rem 0;
   font-size: 2rem;
   font-weight: 600;
+}
+
+@media (max-width: 765px) {
+  .ShoeInfo {
+    flex-direction: column;
+  }
+  .product-img {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .product-info {
+    width: 100%;
+    margin: 2rem auto 0;
+    text-align: center;
+  }
 }

@@ -47,7 +47,7 @@
 }
 
 .remove-from-cart {
-  width: 100px;
+  width: 60px;
 }
 .remove-from-cart button {
   background: transparent;
@@ -101,4 +101,56 @@
 .EmptyCart .redirectBtn:hover {
   color: rgb(198, 83, 0);
   text-decoration: underline;
+}
+
+@media (max-width: 765px) {
+  .item-info {
+    width: 8rem;
+  }
+}
+@media (max-width: 750px) {
+  .CartItem img {
+    width: 10rem;
+  }
+}
+@media (max-width: 660px) {
+  .CartItem img {
+    width: 9rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .CartItem {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .CartItem img {
+    width: 100%;
+  }
+
+  .item-info p {
+    margin: 0;
+  }
+  .sub-total {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .sub-total h6,
+  .sub-total h5 {
+    margin: 0 5px;
+  }
+
+  .quantity {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .quantity h6 {
+    margin: 0;
+  }
+  .quantity > div {
+    margin: 0 5px;
+  }
 }

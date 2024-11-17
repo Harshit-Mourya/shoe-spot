@@ -14,7 +14,7 @@ export default function ShoeInfo() {
         <div className="product-img">
           <img src={product.imgSrc} alt="product.title" />
         </div>
-        <div className="product-info my-auto">
+        <div className="product-info">
           <h3>{product.title}</h3>
           <p>{product.description}</p>
           <p className="product-price">Price: $ {product.price}</p>

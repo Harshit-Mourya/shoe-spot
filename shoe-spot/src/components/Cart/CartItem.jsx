@@ -20,7 +20,7 @@ export default function CartItem({ item }) {
         </div>
         <div className="quantity d-flex flex-column justify-content-center   align-items-center">
           <div>
-            <h6>Quantity</h6>
+            <h6>Quantity:</h6>
           </div>
           <div className="edit-qty d-flex justify-content-center align-items-center">
             <div onClick={() => handleRemoveItemClick(item)}>-</div>
