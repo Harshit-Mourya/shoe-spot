@@ -176,7 +176,7 @@
   .allFilters {
     flex-direction: column;
 
-    padding: 2rem;
+    padding: 0 2rem;
   }
   .filters {
     margin-bottom: 20px;
