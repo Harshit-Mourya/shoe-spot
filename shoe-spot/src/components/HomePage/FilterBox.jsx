@@ -7,10 +7,12 @@ export default function FilterBox({}) {
   const { filterProducts } = useContext(productsContext);
   const handleFilterClick = (filter, cost) => {
     filterProducts(filter, cost);
+    toggleFilter();
   };
+
   const { toggleFilter } = useContext(filterContext);
   const filterToggle = () => {
-    console.log("in filter box");
+    // console.log("in filter box");
 
     toggleFilter();
   };
