@@ -1,6 +1,14 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
 
+main()
+  .then(() => console.log("Connection Successful!"))
+  .catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/shoespot");
+}
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -10,8 +18,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.get("/api", (req, res) => {
-  res.json({ fruits: ["apple", "mango", "banana", "orange"] });
+app.get("/", (req, res) => {
+  res.send({ fruits: ["apple", "mango", "banana", "orange"] });
 });
 
 app.listen(PORT, () => {
