@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -7,10 +8,11 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGOURL);
+  const dbURL = process.env.MONGOURL;
+  await mongoose.connect(dbURL);
 }
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 const cors = require("cors");
 const corsOptions = {
