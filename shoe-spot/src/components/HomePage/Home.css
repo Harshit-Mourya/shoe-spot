@@ -1,0 +1,184 @@
+.Home {
+  background-color: bisque;
+}
+
+.ShoeList {
+  position: relative;
+  display: flex;
+  background-color: bisque;
+  z-index: 2;
+}
+
+.FilterBox {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 1rem;
+  border: 2px solid chocolate;
+  background-color: rgb(255, 238, 217);
+  z-index: 3;
+}
+
+.allFilters {
+  display: flex;
+  justify-content: space-around;
+}
+
+.close-filter {
+  position: relative;
+
+  margin-bottom: 10px;
+}
+
+.fa-xmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 8px;
+  color: chocolate;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fa-xmark:hover {
+  background-color: rgba(255, 106, 0, 0.294);
+  color: rgb(198, 83, 0);
+}
+
+.filters h5 {
+  color: rgb(198, 83, 0);
+  cursor: pointer;
+}
+
+.filter-option {
+  color: chocolate;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.filter-option:hover {
+  text-decoration: underline 1px solid rgb(198, 83, 0);
+  background-color: rgba(255, 106, 0, 0.294);
+}
+
+.dull-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  z-index: 1; /* Make sure it stays behind the filter box */
+  transition: opacity 0.3s ease; /* Smooth fade-in/fade-out */
+}
+
+.ShoeListMain {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-evenly;
+  background-color: bisque;
+  padding: 2rem 0;
+}
+
+.ShoeListMain.blur {
+  filter: blur(3px); /* Adjust the blur value as needed */
+  pointer-events: none; /* Optional: Disable interactions with blurred content */
+  transition: filter 0.3s ease; /* Smooth transition when the blur is applied/removed */
+}
+
+.ShoeCard {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 3rem 1rem;
+  width: 350px;
+  max-height: 440px;
+  color: white;
+  background-color: #1f1f1f;
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.ShoeCard:hover {
+  box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.5);
+}
+
+.ShoeCard img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 8px 0;
+}
+
+.card-price {
+  font-size: 1.1rem;
+  color: #b4b4b4;
+  margin-bottom: 8px;
+}
+
+.card-content {
+  font-size: 1rem;
+  color: #b4b4b4;
+  margin-bottom: 8px;
+}
+
+.ShoeInfo {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem;
+  background-color: bisque;
+}
+
+.product-img {
+  width: 45%;
+}
+.product-img img {
+  width: 100%;
+}
+
+.product-info {
+  width: 45%;
+  margin: auto 0;
+}
+
+.product-price {
+  font-size: 1.2rem;
+}
+
+.no-products {
+  margin: 15rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+@media (max-width: 765px) {
+  .ShoeInfo {
+    flex-direction: column;
+  }
+  .product-img {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .product-info {
+    width: 100%;
+    margin: 2rem auto 0;
+    text-align: center;
+  }
+  .allFilters {
+    flex-direction: column;
+
+    padding: 0 2rem;
+  }
+  .filters {
+    margin-bottom: 20px;
+  }
+}
