@@ -73,11 +73,13 @@ export default function Navbar() {
         </div>
         <div className="container-fluid border-top d-flex align-items-center justify-content-between h-50 px-4 nav-2">
           <div className="nav-options w-50 d-flex justify-content-between mx-auto">
-            {shoeKeys.map((shoeKey, index) => (
+            {shoeKeys.map((shoeKey) => (
               <NavItem
                 shoeKey={shoeKey}
-                shoeType={shoeTypes[shoeKey]}
-                key={index}
+                filteredShoes={shoeTypes.filter(
+                  (shoeType) => shoeType.shoeKey === shoeKey._id
+                )}
+                key={shoeKey._id}
               />
             ))}
 

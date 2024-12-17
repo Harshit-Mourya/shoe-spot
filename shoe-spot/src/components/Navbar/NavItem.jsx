@@ -1,9 +1,9 @@
 import "./Navbar.css";
 import NavItemOptions from "./NavItemOptions.jsx";
 
-export default function NavItem({ shoeKey, shoeType }) {
+export default function NavItem({ shoeKey, filteredShoes }) {
   // console.log(shoeKey);
-  // console.log(shoeType);
+  // console.log(filteredShoes);
 
   return (
     <div className="nav-item dropdown">
@@ -14,12 +14,12 @@ export default function NavItem({ shoeKey, shoeType }) {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        {shoeKey}
+        {shoeKey.name}
       </a>
       <ul className="dropdown-menu">
-        {shoeType.map((shoe, index) => (
-          <li key={index}>
-            <NavItemOptions shoe={shoe} />
+        {filteredShoes.map((shoe) => (
+          <li key={shoe._id}>
+            <NavItemOptions shoeName={shoe.name} />
           </li>
         ))}
       </ul>

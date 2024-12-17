@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 import { productsContext } from "../../context/productsContext.jsx";
-export default function NavItemOptions({ shoe }) {
+export default function NavItemOptions({ shoeName }) {
   const { filterProductsByCategory, setShoeCategory } =
     useContext(productsContext);
 
@@ -17,9 +17,9 @@ export default function NavItemOptions({ shoe }) {
       <Link
         to="/"
         className="dropdown-item"
-        onClick={() => handleFilterClick(`${shoe.split(" ")[0]}`)}
+        onClick={() => handleFilterClick(`${shoeName.split(" ")[0]}`)}
       >
-        {shoe}
+        {shoeName}
       </Link>
     </>
   );

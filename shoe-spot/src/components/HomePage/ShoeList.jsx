@@ -26,7 +26,7 @@ export default function ShoeList({}) {
           <h3 className="no-products">No products available!</h3>
         ) : (
           products.map((product) => (
-            <ShoeCard product={product} key={product.id} />
+            <ShoeCard product={product} key={product._id} />
           ))
         )}
       </div>

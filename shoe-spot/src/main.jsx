@@ -6,10 +6,10 @@ import { ProductsProvider } from "./context/productsContext.jsx";
 import { CartProvider } from "./context/cartContext.jsx";
 import { FilterProvider } from "./context/filterContext.jsx";
 
-import { makeServer } from "./miragejs/mirage.js"; // Import the Mirage server setup
+// import { makeServer } from "./miragejs/mirage.js"; // Import the Mirage server setup
 
 // Start the Mirage server
-makeServer();
+// makeServer();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
