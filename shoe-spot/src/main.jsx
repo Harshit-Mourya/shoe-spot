@@ -5,6 +5,7 @@ import "./index.css";
 import { ProductsProvider } from "./context/productsContext.jsx";
 import { CartProvider } from "./context/cartContext.jsx";
 import { FilterProvider } from "./context/filterContext.jsx";
+import { UserProvider } from "./context/userContext.jsx";
 
 // import { makeServer } from "./miragejs/mirage.js"; // Import the Mirage server setup
 
@@ -13,6 +14,7 @@ import { FilterProvider } from "./context/filterContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <UserProvider>
     <ProductsProvider>
       <CartProvider>
         <FilterProvider>
@@ -20,5 +22,6 @@ createRoot(document.getElementById("root")).render(
         </FilterProvider>
       </CartProvider>
     </ProductsProvider>
+    </UserProvider>
   </StrictMode>
 );

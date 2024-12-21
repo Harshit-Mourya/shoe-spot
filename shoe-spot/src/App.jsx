@@ -10,6 +10,9 @@ import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/HomePage/Home.jsx";
 import ShoeInfo from "./components/HomePage/ShoeInfo.jsx";
 import NotFound from "./components/NotFound.jsx";
+import Signup from "./components/LoginSignup/Signup.jsx";
+import Login from "./components/LoginSignup/Login.jsx";
+
 
 function App() {
   // const [products, setProducts] = useState([]);
@@ -86,6 +89,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product-details" element={<ShoeInfo />} />
         <Route path="/my-cart" element={<Cart />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

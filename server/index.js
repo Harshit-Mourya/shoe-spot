@@ -10,6 +10,7 @@ const categoryRoutes = require("./routes/categoryRoutes.js");
 const costRangeRoutes = require("./routes/costRangeRoutes.js");
 const searchRoutes = require("./routes/searchRoutes.js");
 const allRoutes = require("./routes/allRoutes.js");
+const authRoutes = require("./routes/authRoutes.js");
 
 
 main()
@@ -37,6 +38,7 @@ app.use("/category", categoryRoutes);
 app.use("/costrange", costRangeRoutes);
 app.use("/search", searchRoutes);
 app.use("/all", allRoutes);
+app.use("/auth", authRoutes);
 
 
 
