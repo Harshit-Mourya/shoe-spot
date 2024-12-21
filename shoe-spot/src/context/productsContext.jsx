@@ -59,7 +59,7 @@ export const ProductsProvider = ({ children }) => {
       const response = await axios.get(`/search`, {
         params: { searchTerm },
       });
-      setProducts(response.data);
+      setProducts(response.data.products);
     } catch (error) {
       console.error("Error fetching products:", error);
       setError(

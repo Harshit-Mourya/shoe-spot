@@ -12,13 +12,13 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevCartItems) => {
       // Check if the item is already in the cart
       const isItemInCart = prevCartItems.find(
-        (cartItem) => cartItem.id === item.id
+        (cartItem) => cartItem._id === item._id
       );
 
       if (isItemInCart) {
         // If the item is already in the cart, increase its quantity
         return prevCartItems.map((cartItem) =>
-          cartItem.id === item.id
+          cartItem._id === item._id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -30,18 +30,18 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
+    const isItemInCart = cartItems.find((cartItem) => cartItem._id === item._id);
 
     // Ensure that the item was found before checking its quantity
     if (isItemInCart) {
       if (isItemInCart.quantity === 1) {
         // If quantity is 1, remove the item from the cart entirely
-        setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+        setCartItems(cartItems.filter((cartItem) => cartItem._id !== item._id));
       } else {
         // If quantity is greater than 1, decrease the quantity of the item by 1
         setCartItems(
           cartItems.map((cartItem) =>
-            cartItem.id === item.id
+            cartItem._id === item._id
               ? { ...cartItem, quantity: cartItem.quantity - 1 }
               : cartItem
           )
@@ -51,9 +51,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const deleteFromCart = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
+    const isItemInCart = cartItems.find((cartItem) => cartItem._id === item._id);
     if (isItemInCart) {
-      setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+      setCartItems(cartItems.filter((cartItem) => cartItem._id !== item._id));
     }
   };
 
