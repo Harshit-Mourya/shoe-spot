@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "/logo.png";
 import NavItem from "./NavItem.jsx";
+import CircleMenu from "./CircleMenu.jsx"
 import { useContext } from "react";
 import { productsContext } from "../../context/productsContext.jsx";
 import { cartContext } from "../../context/cartContext";
@@ -44,6 +45,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
+        <CircleMenu/>
         <div className="container-fluid d-flex align-items-center h-50 nav-1">
           <Link
             to="/"

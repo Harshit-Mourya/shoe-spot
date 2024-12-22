@@ -2,12 +2,11 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext.jsx"; // Import UserContext
 import { useNavigate } from "react-router-dom";
 
-
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
 
-export default function Signup(){
-    const [name, setName] = useState("");
+export default function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
@@ -37,6 +36,8 @@ export default function Signup(){
       // Send POST request to the backend for signup
       const response = await axios.post("/auth/signup", userData);
 
+      console.log(response.data);
+
       // Assuming backend sends token and user data in response
       const { token, user } = response.data;
 
@@ -47,13 +48,13 @@ export default function Signup(){
       navigate("/"); // Redirect to home page
     } catch (err) {
       setLoading(false);
+      console.log(err);
       setError("Error signing up. Please try again.");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="signup-container">
@@ -99,4 +100,4 @@ export default function Signup(){
       </form>
     </div>
   );
-};
+}

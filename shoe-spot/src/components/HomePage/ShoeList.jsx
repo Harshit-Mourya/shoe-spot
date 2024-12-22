@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { productsContext } from "../../context/productsContext.jsx";
 import { filterContext } from "../../context/filterContext.jsx";
 
-export default function ShoeList({}) {
+export default function ShoeList() {
   const [error, setError] = useState(null);
 
   const { isFilterOn, setIsFilterOn, toggleFilter } = useContext(filterContext);
