@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext.jsx"; // Import UserContext
 import { useNavigate } from "react-router-dom";
+import "./LoginSignup.css";
 
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
@@ -58,45 +59,73 @@ export default function Signup() {
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h1 className="mx-auto mb-3">Sign Up</h1>
       {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Shipping Address"
-          value={shippingAddress}
-          onChange={(e) => setShippingAddress(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
+      <form onSubmit={handleSubmit} className="signup-form mx-auto mt-3">
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="name">Name &nbsp;</label>
+
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Full Name"
+            value={name}
+            onChange={(evt) => setName(evt.target.value)}
+            required
+          />
+        </div>
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="email">Email &nbsp;</label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(evt) => setEmail(evt.target.value)}
+            required
+          />
+        </div>
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="password">Password &nbsp;</label>
+          <input
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(evt) => setPassword(evt.target.value)}
+            required
+          />
+        </div>
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="shippingAddress">Shipping Address &nbsp;</label>
+          <input
+            name="shippingAddress"
+            id="shippingAddress"
+            type="text"
+            placeholder="Shipping Address"
+            value={shippingAddress}
+            onChange={(evt) => setShippingAddress(evt.target.value)}
+            required
+          />
+        </div>
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="phone">Phone &nbsp;</label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(evt) => setPhone(evt.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn loginSignupBtn mx-auto">
+          Sign Up
+        </button>
       </form>
     </div>
   );

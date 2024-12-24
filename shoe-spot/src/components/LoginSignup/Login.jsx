@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./LoginSignup.css";
 import { UserContext } from "../../context/userContext";
 
 import axios from "axios";
@@ -46,24 +46,38 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(evt) => setEmail(evt.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(evt) => setPassword(evt.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
+      <h1 className="mx-auto mb-3">Login</h1>
+      {error && <p className="error mx-auto">{error}</p>}
+      <form onSubmit={handleSubmit} className="login-form mx-auto mt-3">
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="email">Email &nbsp;</label>
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(evt) => setEmail(evt.target.value)}
+            required
+          />
+        </div>
+        <div className="form-input mx-auto w-25">
+          <label htmlFor="password">Password &nbsp;</label>
+          <br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(evt) => setPassword(evt.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn loginSignupBtn mx-auto">
+          Login
+        </button>
       </form>
     </div>
   );

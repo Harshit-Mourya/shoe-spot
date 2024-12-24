@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
 
+import { jwtDecode } from "jwt-decode";
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -18,6 +20,26 @@ export const UserProvider = ({ children }) => {
     // On page load, check if the user is authenticated by the token in localStorage
     if (!authToken) {
       setLoading(false);
+      return;
+    }
+
+    // Decode and check if the token has expired
+    try {
+      const decoded = jwtDecode(authToken);
+      const currentTime = Date.now() / 1000; // Get current time in seconds
+
+      if (decoded.exp < currentTime) {
+        // Token has expired
+        localStorage.removeItem("token"); // Remove expired token
+        setAuthToken(null); // Reset authToken state
+        setUser(null); // Reset user state
+        setLoading(false); // Stop loading
+        window.location.href = "/"; // Optionally redirect to login
+        return; // Prevent further execution
+      }
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      setLoading(false); // Stop loading if there's an error decoding the token
       return;
     }
 

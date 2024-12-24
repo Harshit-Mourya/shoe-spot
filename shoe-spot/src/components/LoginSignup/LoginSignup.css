@@ -1,0 +1,52 @@
+.login-container,
+.signup-container {
+  background-color: bisque;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  display: inline;
+  padding: 10px 20px;
+  /* margin: 10px auto; */
+  font-size: 1.5rem;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.form-input label {
+  font-size: 1.3rem;
+}
+
+.form-input input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid chocolate;
+}
+
+.form-input input:focus {
+  outline: 1px solid rgb(198, 83, 0);
+}
+
+.loginSignupBtn {
+  background-color: chocolate;
+  color: white !important;
+  /* display: inline; */
+}
+
+.loginSignupBtn:hover {
+  background-color: rgb(198, 83, 0);
+}
