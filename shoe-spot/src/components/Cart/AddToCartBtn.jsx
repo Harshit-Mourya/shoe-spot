@@ -5,7 +5,7 @@ import "./Cart.css";
 export default function AddToCartBtn({ product }) {
   const { addToCart } = useContext(cartContext);
   const handleButtonClick = (product) => {
-    console.log("Add To Cart");
+    console.log("Add To Cart Btn");
     console.log(product);
     addToCart(product);
   };

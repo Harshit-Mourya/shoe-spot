@@ -61,10 +61,10 @@ router.post("/signup", async (req, res) => {
 
 // POST request for user login
 router.post("/login", async (req, res) => {
-  console.log("req.body ", req.body);
+  // console.log("req.body ", req.body);
 
   const { email, password } = req.body;
-  console.log("Email ", email, "Pass ", password);
+  // console.log("Email ", email, "Pass ", password);
 
   // Validate input fields
   if (!email || !password) {
@@ -75,7 +75,7 @@ router.post("/login", async (req, res) => {
   try {
     // Check if the user exists by email
     const user = await User.findOne({ email });
-    console.log("User ", user);
+    // console.log("User ", user);
     if (!user) {
       return res.status(400).json({ message: "User does not exist!" });
     }

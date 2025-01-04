@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // On page load, check if the user is authenticated by the token in localStorage
     if (!authToken) {
+      console.log("No authToken found!");
       setLoading(false);
       return;
     }
@@ -52,9 +53,13 @@ export const UserProvider = ({ children }) => {
             Authorization: `Bearer ${authToken}`, // Include token for authentication
           },
         });
-        console.log(response.data);
+        console.log("Inside useEffect : ", response.data);
         // Store the user data in the state
+        console.log("Seeting userData in useEffect");
+
         setUser(response.data); // Assuming the response contains the user data
+        localStorage.setItem("userId", response.data._id);
+
         setLoading(false); // Stop loading
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -66,17 +71,19 @@ export const UserProvider = ({ children }) => {
     fetchUser();
   }, [authToken]);
 
-  const login = (token, userData) => {
+  const login = (token) => {
     // Store token in localStorage and update state
     localStorage.setItem("token", token);
     setAuthToken(token);
-    setUser(userData); // Store user data
+    // console.log("Seeting userData in login()");
+    // setUser(userData); // Store user data
   };
 
   const logout = () => {
     // Remove token from localStorage and reset state
     console.log("Logged Out");
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     setAuthToken(null);
     setUser(null);
   };

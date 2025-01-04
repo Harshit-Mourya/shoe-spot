@@ -23,7 +23,7 @@ export default function Cart() {
         <div className="CartItems mx-auto">
           {cartItems.length === 0 ? <EmptyCart /> : null}
           {cartItems.map((item) => (
-            <CartItem item={item} key={item.id} />
+            <CartItem item={item} key={item.productId._id} />
           ))}
         </div>
         <div className="cartEnd d-flex justify-content-around align-items-center mx-auto w-75">

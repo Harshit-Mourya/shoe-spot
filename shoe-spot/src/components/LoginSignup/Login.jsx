@@ -23,12 +23,12 @@ export default function Login() {
       // Send POST request to backend API for login
       const response = await axios.post("/auth/login", loginData);
 
-      console.log(response);
+      console.log("In Login form : ", response.data);
 
       // If login is successful, get token and user data
-      const { token, user } = response.data;
+      const { token } = response.data;
 
-      login(token, user);
+      login(token);
       // Save the token to localStorage (for later use in requests)
       // localStorage.setItem("token", token);
 
@@ -37,7 +37,7 @@ export default function Login() {
       // Redirect to another page (for example, dashboard)
       navigate("/");
 
-      console.log("Login successful", user); // Handle successful login
+      console.log("Login successful"); // Handle successful login
     } catch (error) {
       setError(error.response?.data?.message || "Login failed");
       console.error("Login error in Login.jsx", error);

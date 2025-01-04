@@ -12,6 +12,7 @@ const searchRoutes = require("./routes/searchRoutes.js");
 const allRoutes = require("./routes/allRoutes.js");
 const authRoutes = require("./routes/authRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
+const cartRoutes = require("./routes/cartRoutes.js");
 
 main()
   .then(() => console.log("Connection Successful!"))
@@ -40,6 +41,7 @@ app.use("/search", searchRoutes);
 app.use("/all", allRoutes);
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/cart", cartRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);

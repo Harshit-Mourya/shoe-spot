@@ -37,13 +37,13 @@ export default function Signup() {
       // Send POST request to the backend for signup
       const response = await axios.post("/auth/signup", userData);
 
-      console.log(response.data);
+      console.log("In signup form : ", response.data);
 
       // Assuming backend sends token and user data in response
-      const { token, user } = response.data;
+      const { token } = response.data;
 
       // Call login function from UserContext to store user and token
-      login(token, user);
+      login(token);
 
       // Redirect user to home page or a protected route
       navigate("/"); // Redirect to home page
