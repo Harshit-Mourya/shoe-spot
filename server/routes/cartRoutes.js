@@ -2,6 +2,9 @@ const express = require("express");
 const Cart = require("../models/cart.js");
 const Product = require("../models/products.js");
 const router = express.Router();
+const isLoggedIn = require("../middlewares/isLoggedIn.js");
+
+router.use(isLoggedIn);
 
 router.get("/:userId", async (req, res) => {
   try {

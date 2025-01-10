@@ -1,10 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { UserContext } from "./userContext";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
 export const cartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const { authToken } = useContext(UserContext);
+
   const userId = localStorage.getItem("userId");
 
   const handleResponseData = (responseData) => {
@@ -24,8 +27,12 @@ export const CartProvider = ({ children }) => {
     }
     const fetchCart = async () => {
       try {
-        console.log("userId : ", userId);
-        const response = await axios.get(`/cart/${userId}`);
+        console.log("userId : ", userId, "authToken ", authToken);
+        const response = await axios.get(`/cart/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`, // Add Bearer token here
+          },
+        });
         console.log("Cart data got : ", response.data.items);
         const items = handleResponseData(response.data.items);
         console.log("Items ", items);
@@ -59,10 +66,18 @@ export const CartProvider = ({ children }) => {
 
     console.log("In addToCart: ", item);
     try {
-      const response = await axios.post(`/cart/${userId}`, {
-        productId: item._id,
-        quantity: 1, // default quantity is 1
-      });
+      const response = await axios.post(
+        `/cart/${userId}`,
+        {
+          productId: item._id,
+          quantity: 1, // default quantity is 1
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`, // Add Bearer token here
+          },
+        }
+      );
       console.log("addToCart: ", response.data.items);
       const items = handleResponseData(response.data.items);
       console.log("Items ", items);
@@ -78,9 +93,15 @@ export const CartProvider = ({ children }) => {
     try {
       // Send a request to the backend to either remove the item completely
       // or decrease the quantity based on the backend logic.
-      const response = await axios.post(`/cart/${userId}/item`, {
-        productId: item._id,
-      });
+      const response = await axios.post(
+        `/cart/${userId}/item`,
+        { productId: item._id },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`, // Add Bearer token here
+          },
+        }
+      );
 
       console.log("After removal ", response.data);
       // Update the cart items with the response from the server
@@ -120,6 +141,10 @@ export const CartProvider = ({ children }) => {
       console.log(item);
       // Send DELETE request to backend to remove the item
       const response = await axios.delete(`/cart/${userId}/item`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`, // Add Bearer token here
+        },
+
         data: { productId: item._id },
       });
       console.log("After deletion ", response.data);
@@ -162,7 +187,11 @@ export const CartProvider = ({ children }) => {
   const clearCart = async () => {
     try {
       // Send a DELETE request to clear the cart on the backend
-      const response = await axios.delete(`/cart/${userId}/cart`);
+      const response = await axios.delete(`/cart/${userId}/cart`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`, // Add Bearer token here
+        },
+      });
 
       // After clearing the cart on the backend, clear the cart in the context
       setCartItems(response.data.cart.items || []); // Clear cartItems state (frontend)

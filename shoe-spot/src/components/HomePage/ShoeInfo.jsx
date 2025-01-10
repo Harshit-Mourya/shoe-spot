@@ -18,6 +18,7 @@ export default function ShoeInfo() {
           <h3>{product.title}</h3>
           <p>{product.description}</p>
           <p className="product-price">Price: $ {product.price}</p>
+          {/* <p>Available sizes: {product.sizes}</p> */}
           <AddToCartBtn product={product} />
         </div>
       </div>

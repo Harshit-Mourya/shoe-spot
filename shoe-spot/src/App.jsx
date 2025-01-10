@@ -12,7 +12,7 @@ import ShoeInfo from "./components/HomePage/ShoeInfo.jsx";
 import NotFound from "./components/NotFound.jsx";
 import Signup from "./components/LoginSignup/Signup.jsx";
 import Login from "./components/LoginSignup/Login.jsx";
-
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
 function App() {
   // const [products, setProducts] = useState([]);
@@ -91,6 +91,7 @@ function App() {
         <Route path="/my-cart" element={<Cart />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

@@ -20,7 +20,7 @@ export default function CartItem({ item }) {
         </div>
         <div className="quantity d-flex flex-column justify-content-center   align-items-center">
           <div>
-            <h6>Quantity:</h6>
+            <h6>Quantity</h6>
           </div>
           <div className="edit-qty d-flex justify-content-center align-items-center">
             <div onClick={() => handleRemoveItemClick(item)}>-</div>
@@ -29,7 +29,7 @@ export default function CartItem({ item }) {
           </div>
         </div>
         <div className="sub-total d-flex flex-column justify-content-center align-items-center">
-          <h6>Subtotal:</h6>
+          <h6>Subtotal</h6>
           <h5>${item.quantity * item.productId.price}</h5>
         </div>
         <div className="remove-from-cart d-flex justify-content-center align-items-center">

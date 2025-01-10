@@ -1,4 +1,4 @@
-.myCart {
+.myDashboard {
   position: relative;
   background-color: bisque;
   display: flex;
@@ -8,12 +8,12 @@
   gap: 30px;
 }
 
-.CartItems {
-  width: 70%;
+.Orders {
+  width: 50%;
   padding: 20px;
 }
 
-.CartItem {
+.Order {
   padding: 10px;
   background-color: white;
   margin: 10px;
@@ -21,16 +21,16 @@
   justify-content: space-between;
   border: 2px solid transparent;
 }
-.CartItem:hover {
+.Order:hover {
   background-color: rgb(252, 214, 167);
   border: 2px solid chocolate;
 }
 
-.CartItem img {
+.Order img {
   width: 12.5rem;
 }
 
-.item-info {
+.order-info {
   width: 12.5rem;
 }
 
@@ -64,78 +64,68 @@
   color: rgb(198, 83, 0);
 }
 
-.clearCartBtn,
-.AddToCartBtn,
-.confirmOrderBtn {
+.cancelOrderBtn {
   background-color: chocolate;
   color: white !important;
 }
 
-.clearCartBtn:hover {
-  background-color: rgb(198, 83, 0);
-}
-.AddToCartBtn:hover {
+.cancelOrderBtn:hover {
   background-color: rgb(198, 83, 0);
 }
 
-.confirmOrderBtn:hover {
-  background-color: rgb(198, 83, 0);
-}
-
-.btn.clearCartBtn:disabled,
-.btn.confirmOrderBtn:disabled {
+.btn.cancelOrderBtn:disabled {
   opacity: 0.5 !important; /* Make the button more faded */
   cursor: not-allowed !important; /* Change the cursor to show it's disabled */
   background-color: chocolate !important; /* Optional: Makes background gray */
 }
 
 @media (max-width: 1160px) {
-  .CartItems {
+  .Order {
     width: 80%;
   }
 }
 @media (max-width: 990px) {
-  .CartItems {
+  .Order {
     width: 95%;
   }
 }
 
-.EmptyCart .redirectBtn {
+.NoOrders .redirectBtn {
   font-weight: 600;
   color: chocolate;
 }
-.EmptyCart .redirectBtn:hover {
+.NoOrders .redirectBtn:hover {
   color: rgb(198, 83, 0);
   text-decoration: underline;
 }
 
 @media (max-width: 765px) {
-  .item-info {
+  .order-info {
     width: 8rem;
   }
 }
 @media (max-width: 750px) {
-  .CartItem img {
+  .Order img {
     width: 10rem;
   }
 }
 @media (max-width: 660px) {
-  .CartItem img {
+  .Order img {
     width: 9rem;
   }
 }
 
 @media (max-width: 550px) {
-  .CartItem {
+  .Order {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  .CartItem img {
+  .Order img {
     width: 100%;
   }
 
-  .item-info p {
+  .order-info p {
     margin: 0;
   }
   .sub-total {

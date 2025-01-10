@@ -35,7 +35,7 @@ export default function Login() {
       // localStorage.setItem("user", JSON.stringify(user)); // Saving userData as an example
 
       // Redirect to another page (for example, dashboard)
-      navigate("/");
+      navigate("/dashboard");
 
       console.log("Login successful"); // Handle successful login
     } catch (error) {

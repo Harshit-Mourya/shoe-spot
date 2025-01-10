@@ -6,6 +6,7 @@ import { ProductsProvider } from "./context/productsContext.jsx";
 import { CartProvider } from "./context/cartContext.jsx";
 import { FilterProvider } from "./context/filterContext.jsx";
 import { UserProvider } from "./context/userContext.jsx";
+import { OrderProvider } from "./context/ordersContext.jsx";
 
 // import { makeServer } from "./miragejs/mirage.js"; // Import the Mirage server setup
 
@@ -15,13 +16,15 @@ import { UserProvider } from "./context/userContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <UserProvider>
-    <ProductsProvider>
-      <CartProvider>
-        <FilterProvider>
-          <App />
-        </FilterProvider>
-      </CartProvider>
-    </ProductsProvider>
+      <OrderProvider>
+        <ProductsProvider>
+          <CartProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </CartProvider>
+        </ProductsProvider>
+      </OrderProvider>
     </UserProvider>
   </StrictMode>
 );

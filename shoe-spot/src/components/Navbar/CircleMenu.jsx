@@ -51,6 +51,7 @@ export default function CircleMenu() {
     setShowOptions(false);
 
     logout(); // Call the logout function from context
+    navigate("/");
   };
 
   return (

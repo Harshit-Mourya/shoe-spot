@@ -31,7 +31,9 @@ export const UserProvider = ({ children }) => {
 
       if (decoded.exp < currentTime) {
         // Token has expired
+        console.log("token expired");
         localStorage.removeItem("token"); // Remove expired token
+        localStorage.removeItem("userId");
         setAuthToken(null); // Reset authToken state
         setUser(null); // Reset user state
         setLoading(false); // Stop loading
@@ -55,10 +57,11 @@ export const UserProvider = ({ children }) => {
         });
         console.log("Inside useEffect : ", response.data);
         // Store the user data in the state
-        console.log("Seeting userData in useEffect");
+        const gotUser = response.data;
+        setUser(gotUser); // Assuming the response contains the user data
+        console.log("Setting userData in useEffect", gotUser);
 
-        setUser(response.data); // Assuming the response contains the user data
-        localStorage.setItem("userId", response.data._id);
+        localStorage.setItem("userId", gotUser._id);
 
         setLoading(false); // Stop loading
       } catch (error) {
@@ -89,7 +92,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, authToken, login, logout }}>
+    <UserContext.Provider value={{ user, authToken, loading, login, logout }}>
       {children}
     </UserContext.Provider>
   );
