@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Product = require("./products.js");
+const isLoggedIn = require("../middlewares/isLoggedIn.js");
 const cartItemSchema = new Schema({
   productId: { type: Schema.Types.ObjectId, ref: "Product", required: true }, // Referencing the Product model
   quantity: { type: Number, required: true, min: 1 },
