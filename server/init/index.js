@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const { products, shoeKeys, shoeTypes } = require("./data.js");
 
@@ -12,7 +14,10 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/shoespot");
+  const dbURL = process.env.MONGOURL;
+  console.log(dbURL);
+
+  await mongoose.connect(dbURL);
 }
 
 const initDB = async () => {
