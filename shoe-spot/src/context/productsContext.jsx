@@ -79,7 +79,7 @@ export const ProductsProvider = ({ children }) => {
         const response = await axios.get("/");
         const { products, shoeKeys, shoeTypes } = response.data;
 
-        // console.log(response.data);
+        console.log(response.data);
         // console.log({ products, shoeKeys, shoeTypes });
         setProducts(products);
         setShoeKeys(shoeKeys);
