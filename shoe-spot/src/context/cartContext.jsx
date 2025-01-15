@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { UserContext } from "./userContext";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
 export const cartContext = createContext();
 
 export const CartProvider = ({ children }) => {

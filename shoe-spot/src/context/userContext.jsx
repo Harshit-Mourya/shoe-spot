@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
 
 import { jwtDecode } from "jwt-decode";
 
