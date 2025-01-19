@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./LoginSignup.css";
 
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://shoe-spot.onrender.com";
 
 export default function Signup() {
   const [name, setName] = useState("");

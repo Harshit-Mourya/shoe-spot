@@ -4,7 +4,7 @@ import "./LoginSignup.css";
 import { UserContext } from "../../context/userContext";
 
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://shoe-spot.onrender.com";
 
 export default function Login() {
   const [email, setEmail] = useState("");
