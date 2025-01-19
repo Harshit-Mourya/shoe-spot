@@ -3,8 +3,13 @@
   width: 100vw;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.Loading h3 {
+  margin: 20px 0;
 }
 
 .loader {
@@ -17,7 +22,7 @@
   content: "";
   grid-area: 1/1;
   border-radius: 50%;
-  background: #f03355;
+  background: rgb(198, 83, 0);
   -webkit-mask: repeating-linear-gradient(#000 0 5px, #0000 0 10px);
   animation: l35 1.5s infinite;
 }
