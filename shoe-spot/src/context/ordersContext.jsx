@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
+
 import { UserContext } from "./userContext";
 export const OrderContext = createContext();
 

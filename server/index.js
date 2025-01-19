@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const Product = require("./models/products");
-const { ShoeKey, ShoeType } = require("./models/shoes");
 
 const productRoutes = require("./routes/productsRoutes.js");
 const categoryRoutes = require("./routes/categoryRoutes.js");

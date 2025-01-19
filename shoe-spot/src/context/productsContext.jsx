@@ -1,6 +1,6 @@
 import { createContext, useState, useMemo, useEffect } from "react";
 import axios from "axios";
-// axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
+axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
 
 export const productsContext = createContext();
 
@@ -76,9 +76,7 @@ export const ProductsProvider = ({ children }) => {
       setLoading(true);
       try {
         console.log("Fetching products...");
-        const response = await axios.get(
-          "https://shoe-spot-backend.onrender.com"
-        );
+        const response = await axios.get("/");
         const { products, shoeKeys, shoeTypes } = response.data;
 
         console.log(response.data);
