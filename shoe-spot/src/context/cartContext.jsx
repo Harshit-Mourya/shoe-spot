@@ -67,6 +67,7 @@ export const CartProvider = ({ children }) => {
     // return [...prevCartItems, { ...item, quantity: 1 }];
     // }
     // });
+    setCartLoading(true);
 
     console.log("In addToCart: ", item);
     try {
@@ -86,13 +87,16 @@ export const CartProvider = ({ children }) => {
       const items = handleResponseData(response.data.items);
       console.log("Items ", items);
       setCartItems(items || []);
+      setCartLoading(false);
     } catch (error) {
       console.error("Error adding item to cart:", error);
+      setCartLoading(false);
     }
   };
 
   const removeFromCart = async (item) => {
     console.log("item id: ", item._id);
+    setCartLoading(true);
 
     try {
       // Send a request to the backend to either remove the item completely
@@ -113,8 +117,10 @@ export const CartProvider = ({ children }) => {
       const items = handleResponseData(response.data.items);
       console.log("Items ", items);
       setCartItems(items || []);
+      setCartLoading(false);
     } catch (error) {
       console.error("Error removing item from cart:", error);
+      setCartLoading(false);
     }
 
     // const isItemInCart = cartItems.find(
@@ -204,6 +210,7 @@ export const CartProvider = ({ children }) => {
       console.log("Cart cleared successfully:", response.data.cart.items);
     } catch (error) {
       console.error("Error clearing the cart:", error);
+      setCartLoading(false);
     }
   };
 
@@ -212,6 +219,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cartItems,
         cartLoading,
+        setCartLoading,
         addToCart,
         removeFromCart,
         deleteFromCart,
