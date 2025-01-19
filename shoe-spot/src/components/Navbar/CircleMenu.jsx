@@ -54,6 +54,10 @@ export default function CircleMenu() {
     navigate("/");
   };
 
+  const goToDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div>
       {/* Circle Button */}
@@ -79,7 +83,7 @@ export default function CircleMenu() {
             {user ? (
               // Show when the user is logged in
               <>
-                <li>Hi {user.name}</li>
+                <li onClick={goToDashboard}>Hi {user.name}</li>
                 <li onClick={handleLogout}>Logout</li>
               </>
             ) : (

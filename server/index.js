@@ -43,13 +43,13 @@ app.use("/user", userRoutes);
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "build")));
+// // Serve static files
+// app.use(express.static(path.join(__dirname, "build")));
 
-// Catch-all route to serve index.html for any route that doesn't match a server route
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// // Catch-all route to serve index.html for any route that doesn't match a server route
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
