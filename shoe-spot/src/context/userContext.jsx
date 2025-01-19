@@ -3,7 +3,6 @@ import axios from "axios";
 axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
 
 import { jwtDecode } from "jwt-decode";
-import { set } from "mongoose";
 
 export const UserContext = createContext();
 
