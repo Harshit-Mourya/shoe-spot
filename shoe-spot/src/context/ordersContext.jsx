@@ -80,6 +80,7 @@ export const OrderProvider = ({ children }) => {
   };
 
   const clearOrders = async () => {
+    setOrderLoading(true);
     const userId = user._id; // Get userId from context
     const orderId = orders._id;
     try {
@@ -93,11 +94,12 @@ export const OrderProvider = ({ children }) => {
 
       // If successful, filter out the deleted order from the state
       setOrders(response.data.orders);
-
+      setOrderLoading(false);
       console.log("Order deleted successfully:", response.data);
     } catch (error) {
       console.error("Error in deleting order:", error);
       setError("Error deleting order");
+      setOrderLoading(false);
     }
   };
 

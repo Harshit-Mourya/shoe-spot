@@ -6,6 +6,8 @@ export const cartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [cartLoading, setCartLoading] = useState(true); // Track orderLoading state
+
   const { authToken } = useContext(UserContext);
 
   const userId = localStorage.getItem("userId");
@@ -37,8 +39,10 @@ export const CartProvider = ({ children }) => {
         const items = handleResponseData(response.data.items);
         console.log("Items ", items);
         setCartItems(items || []);
+        setCartLoading(false);
       } catch (error) {
         console.error("Error fetching cart:", error);
+        setCartLoading(false);
       }
     };
     fetchCart();
@@ -186,6 +190,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
+      setCartLoading(true);
       // Send a DELETE request to clear the cart on the backend
       const response = await axios.delete(`/cart/${userId}/cart`, {
         headers: {
@@ -195,6 +200,7 @@ export const CartProvider = ({ children }) => {
 
       // After clearing the cart on the backend, clear the cart in the context
       setCartItems(response.data.cart.items || []); // Clear cartItems state (frontend)
+      setCartLoading(false);
       console.log("Cart cleared successfully:", response.data.cart.items);
     } catch (error) {
       console.error("Error clearing the cart:", error);
@@ -205,6 +211,7 @@ export const CartProvider = ({ children }) => {
     <cartContext.Provider
       value={{
         cartItems,
+        cartLoading,
         addToCart,
         removeFromCart,
         deleteFromCart,

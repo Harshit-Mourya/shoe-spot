@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { cartContext } from "../../context/cartContext";
 import { OrderContext } from "../../context/ordersContext";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading.jsx";
 
 import "./Cart.css";
 import EmptyCart from "./EmptyCart";
@@ -11,7 +12,7 @@ import BackButton from "../BackButton";
 export default function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(cartContext);
-  const { addUpdateOrder } = useContext(OrderContext);
+  const { addUpdateOrder, cartLoading } = useContext(OrderContext);
   const navigate = useNavigate();
 
   // console.log(cartItems);
@@ -35,6 +36,10 @@ export default function Cart() {
       console.error("Error confirming order:", error);
     }
   };
+
+  if (cartLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

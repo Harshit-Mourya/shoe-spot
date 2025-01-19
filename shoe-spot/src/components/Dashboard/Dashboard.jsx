@@ -2,6 +2,8 @@ import "./Dashboard.css";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { OrderContext } from "../../context/ordersContext";
+import Loading from "../Loading.jsx";
+
 import BackButton from "../BackButton";
 import NoOrders from "./NoOrders";
 import Order from "./Order";
@@ -32,11 +34,11 @@ export default function Dashboard() {
   };
 
   if (loading || orderLoading) {
-    return <div>Loading...</div>; // You can display a spinner or a more complex loading indicator
+    return <Loading />;
   }
   // Check if the user is null before rendering the user's name
   if (!user) {
-    return <div>Loading...</div>; // Display fallback if user is not available
+    return <Loading />;
   }
 
   return (
