@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import ShoeCard from "./ShoeCard.jsx";
 import FilterBox from "./FilterBox.jsx";
+import Loading from "../Loading.jsx";
 
 import { useContext } from "react";
 import { productsContext } from "../../context/productsContext.jsx";
@@ -12,9 +13,15 @@ export default function ShoeList() {
   const [error, setError] = useState(null);
 
   const { isFilterOn, setIsFilterOn, toggleFilter } = useContext(filterContext);
-  const { products, filterProducts } = useContext(productsContext);
+  const { products, filterProducts, loading } = useContext(productsContext);
 
   if (error) return <div>Error: {error}</div>;
+
+  {
+    if (loading) {
+      return <Loading />;
+    }
+  }
 
   return (
     <div className="ShoeList">
