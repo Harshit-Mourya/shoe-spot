@@ -75,7 +75,7 @@ export const ProductsProvider = ({ children }) => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        // console.log("Fetching products...");
+        console.log("Fetching products...");
         const response = await axios.get("/");
         const { products, shoeKeys, shoeTypes } = response.data;
 
