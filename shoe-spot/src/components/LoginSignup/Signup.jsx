@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext.jsx"; // Import UserContext
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading.jsx";
+
 import "./LoginSignup.css";
 
 import axios from "axios";
@@ -56,6 +58,10 @@ export default function Signup() {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="signup-container">

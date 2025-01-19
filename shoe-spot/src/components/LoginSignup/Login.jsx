@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginSignup.css";
 import { UserContext } from "../../context/userContext";
+import Loading from "../Loading.jsx";
 
 import axios from "axios";
 axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
@@ -12,7 +13,7 @@ export default function Login() {
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // For redirecting after successful login
 
-  const { login } = useContext(UserContext);
+  const { login, loading } = useContext(UserContext);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -43,6 +44,10 @@ export default function Login() {
       console.error("Login error in Login.jsx", error);
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="login-container">

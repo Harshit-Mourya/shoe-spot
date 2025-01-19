@@ -3,6 +3,7 @@ import axios from "axios";
 axios.defaults.baseURL = "https://shoe-spot-backend.onrender.com";
 
 import { jwtDecode } from "jwt-decode";
+import { set } from "mongoose";
 
 export const UserContext = createContext();
 
@@ -75,20 +76,26 @@ export const UserProvider = ({ children }) => {
   }, [authToken]);
 
   const login = (token) => {
+    setLoading(true);
     // Store token in localStorage and update state
     localStorage.setItem("token", token);
     setAuthToken(token);
+    setLoading(false);
+
     // console.log("Seeting userData in login()");
     // setUser(userData); // Store user data
   };
 
   const logout = () => {
+    setLoading(true);
+
     // Remove token from localStorage and reset state
     console.log("Logged Out");
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     setAuthToken(null);
     setUser(null);
+    setLoading(false);
   };
 
   return (
