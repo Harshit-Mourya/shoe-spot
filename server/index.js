@@ -33,6 +33,8 @@ const cors = require("cors");
 // };
 const corsOptions = {
   origin: (origin, callback) => {
+    console.log("Checking origin:", origin); // Log the origin here
+
     const allowedOrigins = [
       "https://shoe-spot.onrender.com",
       "http://localhost:5173",
