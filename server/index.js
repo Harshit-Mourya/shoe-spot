@@ -27,26 +27,11 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 const cors = require("cors");
-// const corsOptions = {
-//   origin: ["http://localhost:5173", "https://shoe-spot.onrender.com"],
-//   methods: "GET, POST, PUT, DELETE",
-// };
 const corsOptions = {
-  origin: (origin, callback) => {
-    console.log("Checking origin:", origin); // Log the origin here
-
-    const allowedOrigins = [
-      "https://shoe-spot.onrender.com",
-      "http://localhost:5173",
-    ];
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error("Not allowed by CORS")); // Reject the request
-    }
-  },
+  origin: ["http://localhost:5173", "https://shoe-spot.onrender.com"],
   methods: "GET, POST, PUT, DELETE",
 };
+
 app.use(cors(corsOptions));
 
 app.use("/", productRoutes);
