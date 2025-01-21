@@ -79,11 +79,6 @@
   background-color: chocolate !important; /* Optional: Makes background gray */
 }
 
-@media (max-width: 1160px) {
-  .Order {
-    width: 80%;
-  }
-}
 @media (max-width: 990px) {
   .Order {
     width: 95%;
@@ -97,6 +92,12 @@
 .NoOrders .redirectBtn:hover {
   color: rgb(198, 83, 0);
   text-decoration: underline;
+}
+
+@media (max-width: 1380px) {
+  .Orders {
+    width: 80%;
+  }
 }
 
 @media (max-width: 765px) {
@@ -148,5 +149,8 @@
   }
   .quantity > div {
     margin: 0 5px;
+  }
+  .Orders {
+    width: 90%;
   }
 }
