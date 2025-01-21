@@ -28,7 +28,7 @@ app.use(express.json());
 
 const cors = require("cors");
 const corsOptions = {
-  origin: ["https://shoe-spot.onrender.com", "http://localhost:5173/"],
+  origin: ["http://localhost:5173", "https://shoe-spot.onrender.com"],
   methods: "GET, POST, PUT, DELETE",
 };
 app.use(cors(corsOptions));
